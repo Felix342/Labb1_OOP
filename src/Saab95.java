@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * A class describing a car of the model Saab95. Has an option to activate/deactivate turbo.
+ * A class describing a car of the model Saab95.
  */
 public class Saab95 extends Car{
 
@@ -12,10 +12,16 @@ public class Saab95 extends Car{
         setTurboOff();
     }
 
+    /**
+     * Activates the turbo of the Saab95.
+     */
     public void setTurboOn(){
         turboOn = true;
     }
 
+    /**
+     * De-activates the turbo of the Saab95.
+     */
     public void setTurboOff(){
         turboOn = false;
     }

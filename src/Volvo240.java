@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * A class describing a car of the model Volvo 240. Has a trimFactor which affects speedFactor.
+ * A class describing a car of the model Volvo 240.
  */
 public class Volvo240 extends Car{
 
