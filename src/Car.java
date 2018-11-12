@@ -85,8 +85,9 @@ public abstract class Car implements Movable {
     /**
      * Turns the car left (relative to the car) by changing the direction.
      */
+    //+3 för att undervika minus besvär
     public void turnLeft() {
-        direction = directions.get((directions.indexOf(direction) - 1) % directions.size());
+        direction = directions.get((directions.indexOf(direction) + 3) % directions.size());
     }
 
     /**
@@ -161,6 +162,7 @@ public abstract class Car implements Movable {
         } else {
             this.currentSpeed = currentSpeed;
         }
+
     }
 
     /**
@@ -168,7 +170,7 @@ public abstract class Car implements Movable {
      *
      * @param amount of increase.
      */
-    public void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
         setCurrentSpeed(getCurrentSpeed() + getSpeedFactor() * amount);
     }
 
@@ -177,7 +179,7 @@ public abstract class Car implements Movable {
      *
      * @param amount of decrease.
      */
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         setCurrentSpeed(getCurrentSpeed() - getSpeedFactor() * amount);
     }
 
@@ -186,8 +188,9 @@ public abstract class Car implements Movable {
      *
      * @param amount
      */
+    //currentSpeed = 0 är motor avstängd.
     public void gas(double amount) {
-        if (amount > 1 || amount < 0) {
+        if (amount > 1 || amount < 0 || 0 == currentSpeed) {
             return;
         }
         incrementSpeed(amount);
