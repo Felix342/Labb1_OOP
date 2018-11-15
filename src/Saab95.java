@@ -26,6 +26,10 @@ public class Saab95 extends Car{
         turboOn = false;
     }
 
+    public boolean isTurboOn() {
+        return turboOn;
+    }
+
     /**
      * Decides the speedFactor by calculating enginePower and potential turbo.
      * @return the speedFactor.

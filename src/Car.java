@@ -154,7 +154,7 @@ public abstract class Car implements Movable {
      */
     public abstract double getSpeedFactor();
 
-    public void setCurrentSpeed(double currentSpeed) {
+    private void setCurrentSpeed(double currentSpeed) {
         if (currentSpeed < 0) {
             this.currentSpeed = 0;
         } else if (currentSpeed > enginePower) {
