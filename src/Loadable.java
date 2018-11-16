@@ -1,20 +1,14 @@
 public interface Loadable {
-
-    double degrees = 0;
-
-    /**
-     * @Return the degrees of the load;
-     */
-    double getDegrees();
+    Car[] cars = new Car[10];
 
     /**
      * Lowers the load
      */
-    void lowerLoad();
+    void load(Car c);
 
     /**
      * Raises the load
      */
-    void raiseLoad();
+    Car unLoad(Car c);
 
 }

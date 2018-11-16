@@ -2,7 +2,7 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Car implements Loadable{
+public class Scania extends Car implements Tiltable{
 
     private double degrees = 0;
     private double speedFactor = 1.5;

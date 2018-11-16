@@ -1,20 +1,23 @@
 import java.awt.*;
 
 public class CarFerry implements Vehicle{
-    private MANG90 mang90 = new MANG90(2, 100, Color.blue);
+    private Trailer trailer = new Trailer();
+
+
+
 
     /**
      * turns the ferry left
      */
     public void turnLeft(){
-        mang90.turnLeft();
+        trailer.turnLeft();
     }
 
     /**
      * turns the ferry right
      */
     public void turnRight(){
-        mang90.turnRight();
+        trailer.turnRight();
     }
 
     /**
@@ -22,7 +25,6 @@ public class CarFerry implements Vehicle{
      * @param c the car to be loaded
      */
     public void loadFerry(Car c){
-        mang90.addCar(c);
     }
 
     /**
@@ -30,7 +32,7 @@ public class CarFerry implements Vehicle{
      * @return the unloaded car
      */
     public Car unloadFerry(){
-        return mang90.removeCar(mang90.getFirstCar());
+        return trailer.removeCar(trailer.getFirstCar());
     }
 
     /**
@@ -38,7 +40,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public void move() {
-        mang90.move();
+        trailer.move();
     }
 
     /**
@@ -47,7 +49,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public double getEnginePower() {
-        return mang90.getEnginePower();
+        return trailer.getEnginePower();
     }
 
     /**
@@ -56,7 +58,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public double getCurrentSpeed() {
-        return mang90.getCurrentSpeed();
+        return trailer.getCurrentSpeed();
     }
 
     /**
@@ -64,7 +66,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public void startEngine() {
-        mang90.startEngine();
+        trailer.startEngine();
     }
 
     /**
@@ -72,7 +74,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public void stopEngine() {
-        mang90.stopEngine();
+        trailer.stopEngine();
     }
 
     /**
@@ -81,7 +83,7 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public void gas(double d) {
-        mang90.gas(d);
+        trailer.gas(d);
     }
 
     /**
@@ -90,6 +92,6 @@ public class CarFerry implements Vehicle{
      */
     @Override
     public void brake(double d) {
-        mang90.brake(d);
+        trailer.brake(d);
     }
 }
