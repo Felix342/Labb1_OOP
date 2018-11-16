@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * An abstract class that implements the interface "Movable". Describes the basic functionality of a standard car.
  */
-public abstract class Car implements Movable {
+public abstract class Car implements Movable, Vehicle{
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car

@@ -2,14 +2,14 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Car implements Truck{
+public class Scania extends Car implements Loadable{
 
     private double degrees = 0;
     private double speedFactor = 1.5;
 
 
-    public Scania(int nrDoors, double enginePower, Color color, String modelName) {
-        super(nrDoors, enginePower, color, modelName);
+    public Scania(int nrDoors, double enginePower, Color color) {
+        super(nrDoors, enginePower, color, "Scania");
     }
 
     /**

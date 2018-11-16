@@ -1,4 +1,4 @@
-public interface Truck {
+public interface Loadable {
 
     double degrees = 0;
 
