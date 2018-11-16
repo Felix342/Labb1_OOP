@@ -2,7 +2,7 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Car{
+public class Scania extends Car implements Truck{
 
     private double degrees = 0;
     private double speedFactor = 1.5;

@@ -97,6 +97,14 @@ public abstract class Car implements Movable {
         direction = directions.get((directions.indexOf(direction) + 1) % directions.size());
     }
 
+    public void setDirection(Direction d){
+        direction = d;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
     /**
      * @return number of doors on the car.
      */
