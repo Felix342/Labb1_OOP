@@ -126,3 +126,38 @@ public class MANG90 extends Car implements Truck {
     }
 
 }
+/*
+import java.awt.Color
+
+class MANG90Test extends GroovyTestCase {
+    void testGetSpeedFactor() {
+        MANG90 m = new MANG90(2, 120, Color.BLUE, "MANG9O");
+        assertEquals(0.9, m.getSpeedFactor());
+    }
+
+    void testLowerLoad() {
+        MANG90 m = new MANG90(2, 120, Color.BLUE, "MANG9O");
+        m.lowerLoad();
+        assertEquals(0, m.getDegrees());
+    }
+
+    void testRaiseLoad() {
+        MANG90 m = new MANG90(2, 120, Color.BLUE, "MANG9O");
+        m.raiseLoad();
+        assertEquals(70, m.getDegrees());
+    }
+
+    void testMove() {
+        MANG90 m = new MANG90(2, 120, Color.BLUE, "MANG9O");
+        m.move();
+        assertEquals(249, m.getY());
+    }
+
+    void testGetDegrees() {
+        MANG90 m = new MANG90(2, 120, Color.BLUE, "MANG9O");
+        m.getDegrees();
+        assertEquals(0, m.degrees);
+    }
+}
+
+ */
