@@ -1,5 +1,6 @@
 public interface Loadable {
     Car[] cars = new Car[10];
+    Trailer trailer = new Trailer();
 
     /**
      * Lowers the load

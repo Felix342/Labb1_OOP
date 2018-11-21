@@ -1,5 +1,3 @@
-import org.omg.PortableInterceptor.DISCARDING;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +6,7 @@ import java.util.List;
 /**
  * An abstract class that implements the interface "Movable". Describes the basic functionality of a standard car.
  */
-public abstract class Car implements Movable, Vehicle{
+public abstract class Car implements Vehicle{
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
@@ -97,10 +95,10 @@ public abstract class Car implements Movable, Vehicle{
         direction = directions.get((directions.indexOf(direction) + 1) % directions.size());
     }
 
-    public void setDirection(Direction d){
-        direction = d;
-    }
-
+    /**
+     *
+     * @return the direction
+     */
     public Direction getDirection() {
         return direction;
     }

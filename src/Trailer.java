@@ -1,11 +1,10 @@
-public class Trailer implements Loadable {
+public class Trailer {
     private Car[] cars = new Car[10];
 
     /**
      * loads a car to the truck
      * @param c the car to be loaded
      */
-    @Override
     public void load(Car c) {
 
         if (!(c instanceof Loadable)) {
@@ -18,7 +17,6 @@ public class Trailer implements Loadable {
      * unloads a car
      * @return the offloaded car
      */
-    @Override
     public Car unLoad(Car c) {
         int index = 0;
         Car car;
@@ -35,6 +33,8 @@ public class Trailer implements Loadable {
         cleanArr(cars, index);
         return c;
     }
+
+
 
     /**
      * Adds a car to the load
@@ -58,6 +58,28 @@ public class Trailer implements Loadable {
         }
         cars[cars.length - 1] = null;
 
+    }
+
+    /**
+     *
+     * @return the first car in load
+     */
+    public Car getFirstCar(){
+        return cars[0];
+    }
+
+    /**
+     *
+     * @return the last car in load
+     */
+    public Car getLastCar(){
+        Car car = null;
+        for (int i = 0; i < cars.length; i++) {
+            if(cars[i] != null){
+                car = cars[i];
+            }
+        }
+        return car;
     }
 
 }

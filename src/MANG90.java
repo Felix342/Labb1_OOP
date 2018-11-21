@@ -9,7 +9,10 @@ public class MANG90 extends Car implements Loadable, Tiltable {
         super(nrDoors, enginePower, color, "MAN G90");
     }
 
-
+    /**
+     *
+     * @param c is the car to be loaded onto the load
+     */
     @Override
     public void load(Car c) {
         if(!raised){
@@ -17,11 +20,18 @@ public class MANG90 extends Car implements Loadable, Tiltable {
         }
     }
 
-    //Behöver inte Override för att den ska inte ta in en bil för att ta bort en bil, medans trailer behöver en bil för att ta bor den. men eligt Loadable behövs den fortfarande.
+    /**
+     * unloades the last car from the load
+     * @return the unloaded car
+     */
+    @Override
     public Car unLoad(Car c) {
-        return trailer.unLoad(getLastCar(cars));
+        return trailer.unLoad(trailer.getLastCar());
     }
 
+    /**
+     * turns this and all cas in it to the left
+     */
     @Override
     public void turnLeft() {
         super.turnLeft();
@@ -30,6 +40,9 @@ public class MANG90 extends Car implements Loadable, Tiltable {
         }
     }
 
+    /**
+     * turns this and all cas in it to the right
+     */
     @Override
     public void turnRight() {
         super.turnRight();
@@ -74,16 +87,6 @@ public class MANG90 extends Car implements Loadable, Tiltable {
         for (int i = 0; i < cars.length; i++) {
             cars[i].move();
         }
-    }
-
-    private Car getLastCar(Car[] c){
-        Car car = null;
-        for (int i = 0; i < c.length; i++) {
-            if(c[i] != null){
-                car = c[i];
-            }
-        }
-        return car;
     }
 
     private boolean isClose(Car c) {
