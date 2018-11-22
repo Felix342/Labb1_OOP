@@ -7,8 +7,8 @@ public class Saab95 extends Car{
 
     private boolean turboOn;
 
-    public Saab95(){
-        super(2, 125, Color.red, "Saab95");
+    public Saab95(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
+        super(enginePower, currentSpeed, color, modelName, nrDoors);
         setTurboOff();
     }
 

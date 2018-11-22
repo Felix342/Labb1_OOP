@@ -1,6 +1,7 @@
 public interface Loadable {
     Car[] cars = new Car[10];
-    Trailer trailer = new Trailer();
+   //TODO Klura ut varför och hur? Yolo man-
+    // Bed bed = null;
 
     /**
      * Lowers the load
@@ -10,6 +11,10 @@ public interface Loadable {
     /**
      * Raises the load
      */
-    Car unLoad(Car c);
+    Car unLoad();
 
+    double getX();
+    double getY();
 }
+
+

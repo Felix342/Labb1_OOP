@@ -2,33 +2,26 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Car implements Tiltable{
+public class Scania extends Truck {
 
-    private double degrees = 0;
+
     private double speedFactor = 1.5;
+    private Bed bed = new Bed();
 
 
-    public Scania(int nrDoors, double enginePower, Color color) {
-        super(nrDoors, enginePower, color, "Scania");
-    }
 
-    /**
-     * @return degrees of the load
-     */
-    public double getDegrees() {
-        return degrees;
+    public Scania(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
+        super(enginePower, currentSpeed, color, modelName, nrDoors);
+        setBed(bed);
     }
 
     /**
      * @return raise the load
      */
     public void raiseLoad() {
-        if(getCurrentSpeed() == 0) {
-            degrees++;
-            if (degrees >= 70) {
-                degrees = 70;
-            }
-        }
+
+            bed.raiseLoad(1);
+
     }
 
     /**
@@ -36,10 +29,14 @@ public class Scania extends Car implements Tiltable{
      */
     public void lowerLoad() {
         if(getCurrentSpeed() == 0) {
-            degrees--;
-            if (degrees <= 0) {
-                degrees = 0;
-            }
+            bed.lowerLoad(1);
+        }
+    }
+
+    @Override
+    public void move() {
+        if(bed.getDegrees() == 0){
+            super.move();
         }
     }
 

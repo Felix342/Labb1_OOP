@@ -1,31 +1,31 @@
 import java.awt.*;
 
-public class MANG90 extends Car implements Loadable, Tiltable {
-    private boolean raised = false;
-    private final Car[] cars = new Car[10];
-    private Trailer trailer = new Trailer();
+public class MANG90 extends Truck implements Loadable {
 
-    public MANG90(int nrDoors, double enginePower, Color color) {
-        super(nrDoors, enginePower, color, "MAN G90");
+    private final Car[] cars = new Car[10];
+    private Trailer trailer = new Trailer(this);
+
+
+    public MANG90(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
+        super(enginePower, currentSpeed, color, modelName, nrDoors);
+        setBed(trailer);
     }
 
     /**
-     *
      * @param c is the car to be loaded onto the load
      */
     @Override
     public void load(Car c) {
-        if(!raised){
             trailer.load(c);
-        }
     }
 
     /**
      * unloades the last car from the load
+     *
      * @return the unloaded car
      */
     @Override
-    public Car unLoad(Car c) {
+    public Car unLoad() {
         return trailer.unLoad(trailer.getLastCar());
     }
 
@@ -52,7 +52,6 @@ public class MANG90 extends Car implements Loadable, Tiltable {
     }
 
     /**
-     *
      * @return the speed factor
      */
     @Override
@@ -65,7 +64,7 @@ public class MANG90 extends Car implements Loadable, Tiltable {
      */
     public void lowerLoad() {
         if (getCurrentSpeed() == 0) {
-            raised = false;
+            trailer.lowerLoad(70);
         }
     }
 
@@ -74,7 +73,7 @@ public class MANG90 extends Car implements Loadable, Tiltable {
      */
     public void raiseLoad() {
         if (getCurrentSpeed() == 0) {
-            raised = true;
+            trailer.raiseLoad(70);
         }
     }
 
@@ -83,19 +82,10 @@ public class MANG90 extends Car implements Loadable, Tiltable {
      */
     @Override
     public void move() {
-        super.move();
-        for (int i = 0; i < cars.length; i++) {
-            cars[i].move();
-        }
-    }
 
-    private boolean isClose(Car c) {
-        if (c.getX() - this.getX() <= 10 && c.getX() - this.getX() >= -10) {
-            if (c.getY() - this.getY() <= 10 && c.getY() - this.getY() >= -10) {
-                return true;
-            }
-        }
-        return false;
+            super.move();
+            trailer.moveAllChildren();
+
     }
 
 }
