@@ -16,8 +16,9 @@ public class Trailer extends Bed {
      */
     public void load(Car c) {
 
-        if (!(c instanceof Loadable) && isClose(c) && getDegrees() == 0) {
+        if (c instanceof Storeable && isClose(c) && getDegrees() == 0 && !c.isLoaded()) {
             addCar(c);
+            c.setLoaded(true);
         }
 
     }
@@ -53,6 +54,7 @@ public class Trailer extends Bed {
             }
 
             shiftArrLeft(cars, index);
+            c.setLoaded(false);
             return c;
         }
         return null;

@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Truck {
+public class Scania extends Truck implements Storeable{
 
 
     private Bed bed = new Bed(this);

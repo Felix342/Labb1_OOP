@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public abstract class Vehicle implements Movable{
 
-
+    private boolean isLoaded = false;
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
@@ -48,6 +48,9 @@ public abstract class Vehicle implements Movable{
      * Adds currentSpeed to x and y according to direction.
      */
     public void move() {
+        if(isLoaded())
+            return;
+        
         switch (direction) {
             case LEFT:
                 x -= getCurrentSpeed();
@@ -64,6 +67,22 @@ public abstract class Vehicle implements Movable{
             default:
                 break;
         }
+    }
+
+    /**
+     *
+     * @return if the car is loaded
+     */
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    /**
+     * sets the status of the vehichle
+     * @param loaded
+     */
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
     }
 
     /**

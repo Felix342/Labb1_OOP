@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * A class describing a car of the model Volvo 240.
  */
-public class Volvo240 extends Car{
+public class Volvo240 extends Car implements Storeable{
 
     private final static double trimFactor = 1.25;
 

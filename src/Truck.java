@@ -24,6 +24,7 @@ public abstract class Truck extends Car implements Tiltable{
 
     /**
      * Accelerates the truck as long as degrees of its bed is not zero.
+     * @param amount
      */
     @Override
     public void gas(double amount) {
