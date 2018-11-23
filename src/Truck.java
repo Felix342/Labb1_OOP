@@ -23,12 +23,12 @@ public abstract class Truck extends Car implements Tiltable{
     }
 
     /**
-     * Moves the truck.
+     * Accelerates the truck as long as degrees of its bed is not zero.
      */
     @Override
-    public void move() {
+    public void gas(double amount) {
         if(bed.getDegrees() == 0) {
-            super.move();
+            super.gas(amount);
         }
     }
 

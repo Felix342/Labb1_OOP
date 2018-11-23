@@ -11,6 +11,7 @@ public abstract class Car extends Vehicle{
     private int nrDoors; // Number of doors on the car
 
 
+
     public Car(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
         super(enginePower, currentSpeed, color, modelName);
         this.nrDoors = nrDoors;
