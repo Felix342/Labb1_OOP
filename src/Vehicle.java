@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * A vehicle that has a position.
+ */
 public abstract class Vehicle implements Movable{
 
 
@@ -34,7 +37,7 @@ public abstract class Vehicle implements Movable{
     /**
      * Direction enumeration
      */
-    private enum Direction {
+    public enum Direction {
         LEFT,
         FORWARD,
         RIGHT,
@@ -131,9 +134,12 @@ public abstract class Vehicle implements Movable{
     /**
      * @return the speedFactor of the car.
      */
-
     public abstract double getSpeedFactor();
 
+    /**
+     *
+     * @param currentSpeed the value to set the Vehicles current speed to
+     */
     private void setCurrentSpeed(double currentSpeed) {
         if (currentSpeed < 0) {
             this.currentSpeed = 0;
@@ -184,30 +190,58 @@ public abstract class Vehicle implements Movable{
         decrementSpeed(amount);
     }
 
+    /**
+     * sets the engine power of the vehicle
+     * @param enginePower sets the local instance of enginePower to its value
+     */
     public void setEnginePower(double enginePower) {
         this.enginePower = enginePower;
     }
 
+    /**
+     * get the model name of the vehicle
+     * @return the model name of the vehicle
+     */
     public String getModelName() {
         return modelName;
     }
 
+    /**
+     * sets the direction of the vehicle.
+     * @param direction sets the local instance of direction to its value
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
+    /**
+     * sets the x-position of the vehicle.
+     * @param x sets the local instance of x to its value.
+     */
     public void setX(double x) {
         this.x = x;
     }
 
+    /**
+     * sets the y-position of the vehicle.
+     * @param y sets the local instance of x to its value.
+     */
     public void setY(double y) {
         this.y = y;
     }
 
+    /**
+     * get the x-position of the vehicle.
+     * @return the x-position of the vehicle.
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     * get the y-position of the vehicle.
+     * @return the y-position of the vehicle.
+     */
     public double getY() {
         return y;
     }

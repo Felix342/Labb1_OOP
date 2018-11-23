@@ -26,6 +26,10 @@ public class Saab95 extends Car{
         turboOn = false;
     }
 
+    /**
+     *
+     * @return the value of turboOn.
+     */
     public boolean isTurboOn() {
         return turboOn;
     }

@@ -1,13 +1,17 @@
+/**
+ * A type of bed which can load cars.
+ */
 public class Trailer extends Bed {
     private Car[] cars = new Car[10];
+    private Loadable owner;
 
     public Trailer(Loadable owner) {
         super(owner);
+        this.owner = owner;
     }
 
     /**
      * loads a car to the truck
-     *
      * @param c the car to be loaded
      */
     public void load(Car c) {
@@ -18,10 +22,16 @@ public class Trailer extends Bed {
 
     }
 
+    /**
+     * Moves all the loaded cars to the same coordinates as the trailer.
+     */
     public void moveAllChildren() {
         for (int i = 0; i < owner.cars.length; i++) {
-            cars[i].setX(owner.getX());
-            cars[i].setY(owner.getY());
+            if(cars[i] != null){
+                cars[i].setX(owner.getX());
+                cars[i].setY(owner.getY());
+            }
+
         }
     }
 
@@ -48,6 +58,11 @@ public class Trailer extends Bed {
         return null;
     }
 
+    /**
+     *
+     * @param c the car to check the distance to
+     * @return wether or not the given car is close enough to be loaded
+     */
     private boolean isClose(Car c) {
         if (c.getX() - owner.getX() <= 10 && c.getX() - owner.getX() >= -10) {
             if (c.getY() - owner.getY() <= 10 && c.getY() - owner.getY() >= -10) {
@@ -55,6 +70,14 @@ public class Trailer extends Bed {
             }
         }
         return false;
+    }
+
+    /**
+     *
+     * @return the cars loaded on the trailer
+     */
+    public Car[] getCars() {
+        return cars;
     }
 
 
@@ -76,6 +99,11 @@ public class Trailer extends Bed {
 
     }
 
+    /**
+     * Shifts the given array as far to the right as possible
+     * @param cars the array to be shifted
+     * @param index
+     */
     private void shiftArrLeft(Car[] cars, int index) {
 
         for (int i = index + 1; i < cars.length; i++) {
@@ -104,4 +132,5 @@ public class Trailer extends Bed {
         }
         return car;
     }
+
 }

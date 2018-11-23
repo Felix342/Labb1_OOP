@@ -1,4 +1,7 @@
-public interface Loadable {
+/**
+ * Describes something that can load a car.
+ */
+public interface Loadable extends Tiltable {
     Car[] cars = new Car[10];
    //TODO Klura ut varför och hur? Yolo man-
     // Bed bed = null;
@@ -13,8 +16,19 @@ public interface Loadable {
      */
     Car unLoad();
 
+    /**
+     * Get x-position of the object.
+     * @return
+     */
     double getX();
+    /**
+     * Get y-position of the object.
+     * @return
+     */
     double getY();
+
+
+
 }
 
 

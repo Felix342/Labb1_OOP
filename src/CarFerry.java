@@ -1,6 +1,9 @@
 import java.awt.*;
 
-public class CarFerry extends Vehicle implements Loadable{
+/**
+ * A Ferry which can hold cars.
+ */
+public class CarFerry extends Vehicle implements Loadable {
     private Trailer trailer = new Trailer(this);
 
 
@@ -10,6 +13,7 @@ public class CarFerry extends Vehicle implements Loadable{
 
     /**
      * loads a car to the ferry
+     *
      * @param c the car to be loaded
      */
     @Override
@@ -22,34 +26,36 @@ public class CarFerry extends Vehicle implements Loadable{
      */
     @Override
     public void move() {
-        if(trailer.getDegrees() == 0) {
+        if (trailer.getDegrees() == 0) {
             super.move();
             trailer.moveAllChildren();
         }
     }
 
     /**
+     * @return the current degree of the tilt of the load
+     */
+    @Override
+    public double getDegrees() {
+        return trailer.getDegrees();
+    }
+
+    /**
      * lowers the load
      */
     public void lowerLoad() {
-        if (getCurrentSpeed() == 0) {
-            trailer.lowerLoad(70);
-        }
+        trailer.lowerLoad(70);
     }
 
     /**
-     * rais the load
+     * raise the load
      */
     public void raiseLoad() {
-        if (getCurrentSpeed() == 0) {
-            trailer.raiseLoad(70);
-        }
+        trailer.raiseLoad(70);
     }
 
 
-
     /**
-     *
      * @return the unloaded car
      */
     @Override
@@ -58,9 +64,19 @@ public class CarFerry extends Vehicle implements Loadable{
     }
 
 
-
+    /**
+     * @return the speedfactor of the carferry.
+     */
     @Override
     public double getSpeedFactor() {
-        return 0;
+        return getEnginePower() * 0.01;
+    }
+
+    /**
+     *
+     * @return the trailer of the CarFerry
+     */
+    public Trailer getTrailer() {
+        return trailer;
     }
 }

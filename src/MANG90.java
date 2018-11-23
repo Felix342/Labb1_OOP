@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ * A truck of the model Mang90.
+ */
 public class MANG90 extends Truck implements Loadable {
 
     private final Car[] cars = new Car[10];
@@ -16,11 +19,11 @@ public class MANG90 extends Truck implements Loadable {
      */
     @Override
     public void load(Car c) {
-            trailer.load(c);
+        trailer.load(c);
     }
 
     /**
-     * unloades the last car from the load
+     * unloads the last car from the load
      *
      * @return the unloaded car
      */
@@ -30,51 +33,43 @@ public class MANG90 extends Truck implements Loadable {
     }
 
     /**
-     * turns this and all cas in it to the left
+     * Turns the MANG90 and all loaded cars to the left
      */
     @Override
     public void turnLeft() {
         super.turnLeft();
         for (int i = 0; i < cars.length; i++) {
-            cars[i].turnLeft();
+            if(cars[i] != null)
+                cars[i].turnLeft();
         }
     }
 
     /**
-     * turns this and all cas in it to the right
+     * Turns the MANG90 and all loaded cars to the right
      */
     @Override
     public void turnRight() {
         super.turnRight();
         for (int i = 0; i < cars.length; i++) {
-            cars[i].turnRight();
+            if(cars[i] != null)
+                cars[i].turnRight();
         }
-    }
-
-    /**
-     * @return the speed factor
-     */
-    @Override
-    public double getSpeedFactor() {
-        return 0.9;
     }
 
     /**
      * lowers the load
      */
     public void lowerLoad() {
-        if (getCurrentSpeed() == 0) {
-            trailer.lowerLoad(70);
-        }
+        trailer.lowerLoad(70);
     }
 
+
+
     /**
-     * rais the load
+     * raise the load
      */
     public void raiseLoad() {
-        if (getCurrentSpeed() == 0) {
-            trailer.raiseLoad(70);
-        }
+        trailer.raiseLoad(70);
     }
 
     /**
@@ -83,9 +78,17 @@ public class MANG90 extends Truck implements Loadable {
     @Override
     public void move() {
 
-            super.move();
-            trailer.moveAllChildren();
+        super.move();
+        trailer.moveAllChildren();
 
+    }
+
+    /**
+     *
+     * @return the trailer of the MANG90
+     */
+    public Trailer getTrailer() {
+        return trailer;
     }
 
 }

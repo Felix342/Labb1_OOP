@@ -16,10 +16,18 @@ public abstract class Car extends Vehicle{
         this.nrDoors = nrDoors;
     }
 
+    /**
+     *
+     * @return the number of doors on the car.
+     */
     public int getNrDoors() {
         return nrDoors;
     }
 
+    /**
+     * Sets the number of doors on the car.
+     * @param nrDoors
+     */
     public void setNrDoors(int nrDoors) {
         this.nrDoors = nrDoors;
     }

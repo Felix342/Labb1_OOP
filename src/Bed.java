@@ -1,9 +1,12 @@
+/**
+ * A platform which can raise and lower its load. (Flak)
+ */
 public class Bed {
 
-    protected Loadable owner;
+    private Tiltable owner;
     private double degrees = 0;
 
-    public Bed(Loadable owner) {
+    public Bed(Tiltable owner) {
         this.owner = owner;
     }
 
@@ -18,22 +21,24 @@ public class Bed {
      * Raise the load
      */
     public void raiseLoad(int amount) {
-       //TODO skaffa currentspeed och se till att man inte kan raise eller lowera under movement.
-        // if(owner.get)
-        if (degrees + amount >= 70)
-            degrees = 70;
-        else
-            degrees += amount;
+        if(owner.getCurrentSpeed() == 0) {
+            if (degrees + amount >= 70)
+                degrees = 70;
+            else
+                degrees += amount;
+        }
     }
 
     /**
      * Lower the load
      */
     public void lowerLoad(int amount) {
-        if (degrees - amount <= 0)
-            degrees = 0;
-        else
-            degrees -= amount;
+        if (owner.getCurrentSpeed() == 0) {
+            if (degrees - amount <= 0)
+                degrees = 0;
+            else
+                degrees -= amount;
 
+        }
     }
 }

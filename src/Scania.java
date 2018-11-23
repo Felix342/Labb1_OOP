@@ -1,13 +1,12 @@
 import java.awt.*;
+
 /**
  * A class representing a Scania truck
  */
 public class Scania extends Truck {
 
 
-    private double speedFactor = 1.5;
-    private Bed bed = new Bed();
-
+    private Bed bed = new Bed(this);
 
 
     public Scania(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
@@ -20,7 +19,7 @@ public class Scania extends Truck {
      */
     public void raiseLoad() {
 
-            bed.raiseLoad(1);
+        bed.raiseLoad(1);
 
     }
 
@@ -28,23 +27,24 @@ public class Scania extends Truck {
      * @return lower the load
      */
     public void lowerLoad() {
-        if(getCurrentSpeed() == 0) {
-            bed.lowerLoad(1);
-        }
-    }
-
-    @Override
-    public void move() {
-        if(bed.getDegrees() == 0){
-            super.move();
-        }
+        bed.lowerLoad(1);
     }
 
     /**
-     * @return the speed factor
+     * Moves the scania.
      */
     @Override
-    public double getSpeedFactor() {
-        return speedFactor;
+    public void move() {
+        super.move();
     }
+
+
+    /**
+     *
+     * @return the bed of the Scania
+     */
+    public Bed getBed() {
+        return bed;
+    }
+
 }
