@@ -1,3 +1,4 @@
+import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Trucks.Scania;
 import org.junit.jupiter.api.Test;
 

@@ -1,11 +1,13 @@
 package Simulation.Vehicles.Cars;
 
+import Simulation.Interfaces.Storeable;
+
 import java.awt.*;
 
 /**
  * A class describing a car of the model Saab95.
  */
-public class Saab95 extends Car implements Storeable{
+public class Saab95 extends Car implements Storeable {
 
     private boolean turboOn;
 

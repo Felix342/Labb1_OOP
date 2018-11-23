@@ -1,6 +1,6 @@
 package Simulation.Vehicles.Cars.Trucks;
 
-import Interfaces.Loadable;
+import Simulation.Interfaces.Loadable;
 import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
 
@@ -10,7 +10,7 @@ import java.awt.*;
  * A truck of the model Mang90.
  */
 public class MANG90 extends Truck implements Loadable {
-
+    
     private final Car[] cars = new Car[10];
     private Trailer trailer = new Trailer(this);
 

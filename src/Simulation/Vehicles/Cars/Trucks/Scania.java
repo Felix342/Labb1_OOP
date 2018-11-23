@@ -1,5 +1,6 @@
 package Simulation.Vehicles.Cars.Trucks;
 
+import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Cars.Trucks.Flak.Bed;
 
 import java.awt.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 /**
  * A class representing a Scania truck
  */
-public class Scania extends Truck implements Storeable{
+public class Scania extends Truck implements Storeable {
 
 
     private Bed bed = new Bed(this);

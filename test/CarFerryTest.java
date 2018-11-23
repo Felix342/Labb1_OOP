@@ -1,3 +1,7 @@
+import Simulation.Vehicles.CarFerry;
+import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Saab95;
+import Simulation.Vehicles.Vehicle;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
