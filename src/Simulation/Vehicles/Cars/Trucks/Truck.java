@@ -1,9 +1,15 @@
+package Simulation.Vehicles.Cars.Trucks;
+
+import Simulation.Interfaces.Tiltable;
+import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Trucks.Flak.Bed;
+
 import java.awt.*;
 
 /**
  * A type of car that has a bed.
  */
-public abstract class Truck extends Car implements Tiltable{
+public abstract class Truck extends Car implements Tiltable {
 
     private Bed bed;
 

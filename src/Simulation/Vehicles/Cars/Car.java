@@ -1,12 +1,13 @@
+package Simulation.Vehicles.Cars;
+
+import Simulation.Vehicles.Vehicle;
+
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * An abstract class that implements the interface "Movable". Describes the basic functionality of a standard car.
  */
-public abstract class Car extends Vehicle{
+public abstract class Car extends Vehicle {
 
     private int nrDoors; // Number of doors on the car
 

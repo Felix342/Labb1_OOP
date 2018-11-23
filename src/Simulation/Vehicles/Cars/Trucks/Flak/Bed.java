@@ -1,3 +1,7 @@
+package Simulation.Vehicles.Cars.Trucks.Flak;
+
+import Interfaces.Tiltable;
+
 /**
  * A platform which can raise and lower its load. (Flak)
  */

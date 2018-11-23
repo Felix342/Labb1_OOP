@@ -1,3 +1,5 @@
+import Simulation.Vehicles.Cars.Trucks.Flak.Bed;
+import Simulation.Vehicles.Cars.Trucks.MANG90;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;

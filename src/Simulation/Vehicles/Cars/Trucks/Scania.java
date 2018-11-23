@@ -1,3 +1,7 @@
+package Simulation.Vehicles.Cars.Trucks;
+
+import Simulation.Vehicles.Cars.Trucks.Flak.Bed;
+
 import java.awt.*;
 
 /**

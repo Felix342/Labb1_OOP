@@ -1,3 +1,9 @@
+package Simulation.Vehicles.Cars.Trucks.Flak;
+
+import Simulation.Interfaces.Loadable;
+import Simulation.Interfaces.Storeable;
+import Simulation.Vehicles.Cars.Car;
+
 /**
  * A type of bed which can load cars.
  */

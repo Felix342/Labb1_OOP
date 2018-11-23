@@ -1,3 +1,4 @@
+import Simulation.Vehicles.Cars.Volvo240;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;

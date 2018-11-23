@@ -1,10 +1,15 @@
+package Simulation.Vehicles;
+
+import Simulation.Interfaces.Movable;
+import Simulation.Vehicles.Cars.Car;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * A vehicle that has a position.
  */
-public abstract class Vehicle implements Movable{
+public abstract class Vehicle implements Movable {
 
     private boolean isLoaded = false;
     private double enginePower; // Engine power of the car
@@ -50,7 +55,7 @@ public abstract class Vehicle implements Movable{
     public void move() {
         if(isLoaded())
             return;
-        
+
         switch (direction) {
             case LEFT:
                 x -= getCurrentSpeed();
