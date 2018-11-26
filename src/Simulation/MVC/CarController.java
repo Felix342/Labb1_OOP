@@ -1,6 +1,8 @@
 package Simulation.MVC;
 
 import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Saab95;
+import Simulation.Vehicles.Cars.Trucks.Scania;
 import Simulation.Vehicles.Cars.Volvo240;
 
 import javax.swing.*;
@@ -35,8 +37,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(100, 0, Color.RED,"Volvo240",4));
-
+        cc.cars.add(new Volvo240(100, 0, Color.WHITE, "Volvo240", 4));
+        cc.cars.add(new Scania(100, 0, Color.BLACK, "Scania", 2));
+        cc.cars.add(new Saab95(200, 0, Color.RED, "Saab95", 2));
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -53,7 +56,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+                frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -63,9 +66,31 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-        ) {
+        for (Car car : cars) {
             car.gas(gas);
         }
+    }
+
+    void startCars() {
+        for (Car c : cars) {
+            c.startEngine();
+        }
+    }
+
+    void stopCars() {
+        for (Car c : cars) {
+            c.stopEngine();
+        }
+    }
+
+    void brakeCar(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
+        }
+    }
+
+    void turboOn(){
+
     }
 }
