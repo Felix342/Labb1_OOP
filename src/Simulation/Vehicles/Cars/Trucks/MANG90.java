@@ -15,8 +15,8 @@ public class MANG90 extends Truck implements Loadable {
     private Trailer trailer = new Trailer(this);
 
 
-    public MANG90(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
-        super(enginePower, currentSpeed, color, modelName, nrDoors);
+    public MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
+        super(enginePower, currentSpeed, color, "ManG90", nrDoors);
         setBed(trailer);
     }
 

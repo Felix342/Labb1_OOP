@@ -37,11 +37,11 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(100, 0, Color.WHITE, "Volvo240", 4));
-        cc.cars.add(new Scania(100, 0, Color.BLACK, "Scania", 2));
-        cc.cars.add(new Saab95(200, 0, Color.RED, "Saab95", 2));
+        cc.cars.add(new Volvo240(100, 0, Color.WHITE, 4));
+        cc.cars.add(new Scania(100, 0, Color.BLACK, 2));
+        cc.cars.add(new Saab95(200, 0, Color.RED, 2));
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.frame = new CarView("CarSim 1.0", cc, cc.cars);
 
         // Start the timer
         cc.timer.start();
@@ -54,12 +54,15 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 car.move();
+
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
+
                 frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
+
         }
     }
 

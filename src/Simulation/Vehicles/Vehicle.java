@@ -4,6 +4,7 @@ import Simulation.Interfaces.Movable;
 import Simulation.Vehicles.Cars.Car;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -16,10 +17,10 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private Vehicle.Direction direction = Car.Direction.FORWARD;
+    private Vehicle.Direction direction = Direction.RIGHT;
     public static ArrayList<Vehicle.Direction> directions = initDirections();
 
-    private double x = 250;
+    private double x = 0;
     private double y = 250;
 
 
@@ -269,4 +270,5 @@ public abstract class Vehicle implements Movable {
     public double getY() {
         return y;
     }
+
 }

@@ -14,8 +14,8 @@ public class Scania extends Truck implements Storeable {
     private Bed bed = new Bed(this);
 
 
-    public Scania(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
-        super(enginePower, currentSpeed, color, modelName, nrDoors);
+    public Scania(double enginePower, double currentSpeed, Color color, int nrDoors) {
+        super(enginePower, currentSpeed, color,"Scania", nrDoors);
         setBed(bed);
     }
 

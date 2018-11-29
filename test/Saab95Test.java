@@ -12,19 +12,19 @@ class Saab95Test {
 
     void getSpeedFactor() {
 
-        Saab95 saab = new Saab95(3, 2, Color.black, "ssd", 3);
+        Saab95 saab = new Saab95(3, 2, Color.black, 3);
         assertEquals(0.03, saab.getSpeedFactor());
     }
     @Test
     void setTurboOn(){
-        Saab95 saab = new Saab95(3, 2, Color.black, "ssd", 3);
+        Saab95 saab = new Saab95(3, 2, Color.black, 3);
         saab.setTurboOn();
 
         assertEquals(true, saab.isTurboOn());
     }
     @Test
     void setTurboOff(){
-        Saab95 saab = new Saab95(3, 2, Color.black, "ssd", 3);
+        Saab95 saab = new Saab95(3, 2, Color.black, 3);
         saab.setTurboOff();
 
         assertEquals(false, saab.isTurboOn());
@@ -32,7 +32,7 @@ class Saab95Test {
 
     @Test
     void isTurboOn() {
-        Saab95 saab = new Saab95(3, 2, Color.black, "ssd", 3);
+        Saab95 saab = new Saab95(3, 2, Color.black, 3);
 
         assertEquals(false, saab.isTurboOn());
 
