@@ -1,9 +1,6 @@
 package Simulation.MVC;
 
 import Simulation.Vehicles.Cars.Car;
-import Simulation.Vehicles.Cars.Saab95;
-import Simulation.Vehicles.Cars.Volvo240;
-import Simulation.Vehicles.Vehicle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -37,6 +34,20 @@ public class DrawPanel extends JPanel{
         currentCar = car;
         imagePoint.x = x;
         imagePoint.y = y;
+        if(x >= 800-100){
+            car.stopEngine();
+            car.turnLeft();
+            car.turnLeft();
+            car.startEngine();
+
+        } else if(x < 0){
+            car.stopEngine();
+            car.turnLeft();
+            car.turnLeft();
+            car.startEngine();
+
+        }
+
     }
 
     // Initializes the panel and reads the images
@@ -65,10 +76,8 @@ public class DrawPanel extends JPanel{
 
     public void initMap(List<Car> cars){
         pointBinder = new HashMap<>();
-
         for (int i = 0; i < cars.size(); i++) {
             cars.get(i).setY(50 + 100*i);
-
             Point p = new Point((int) cars.get(i).getY(), (int) cars.get(i).getY());
             points.add(p);
             pointBinder.put(p, cars.get(i));

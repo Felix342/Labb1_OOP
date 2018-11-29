@@ -125,11 +125,11 @@ public class CarView extends JFrame{
         });
 
         turboOffButton.addActionListener( event ->{
-            carC.startCars();
+            carC.turboOff();
         });
 
         turboOnButton.addActionListener( event ->{
-            carC.startCars();
+            carC.turboOn();
         });
 
         liftBedButton.addActionListener( event ->{
