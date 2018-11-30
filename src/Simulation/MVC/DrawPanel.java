@@ -24,10 +24,9 @@ public class DrawPanel extends JPanel{
 
     // To keep track of a singel cars position
     List<Point> points = new ArrayList();
-    Point imagePoint = new Point(200, 300);
     Map<Point, Car> pointBinder;
 
-    private Car currentCar;// = new Saab95(100,0,Color.RED,4);
+    private Car currentCar;
 
     // TODO: Make this genereal for all cars
     void moveit(int x, int y, Car car){
@@ -47,9 +46,6 @@ public class DrawPanel extends JPanel{
             car.setX(0);
         }
 
-
-        imagePoint.x = x;
-        imagePoint.y = y;
 
     }
 
@@ -80,6 +76,7 @@ public class DrawPanel extends JPanel{
     public void initMap(List<Car> cars){
         pointBinder = new HashMap<>();
         for (int i = 0; i < cars.size(); i++) {
+
             cars.get(i).setY(50 + 100*i);
             Point p = new Point((int) cars.get(i).getY(), (int) cars.get(i).getY());
             points.add(p);
