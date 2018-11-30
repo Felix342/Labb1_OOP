@@ -24,7 +24,7 @@ public class Scania extends Truck implements Storeable {
      */
     public void raiseLoad() {
 
-        bed.raiseLoad(1);
+        bed.raiseLoad(10); //TODO sätt till 1
 
     }
 
@@ -32,7 +32,7 @@ public class Scania extends Truck implements Storeable {
      * @return lower the load
      */
     public void lowerLoad() {
-        bed.lowerLoad(1);
+        bed.lowerLoad(10);
     }
 
     /**

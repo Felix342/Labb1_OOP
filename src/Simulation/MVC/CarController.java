@@ -4,6 +4,7 @@ import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Saab95;
 import Simulation.Vehicles.Cars.Trucks.Scania;
 import Simulation.Vehicles.Cars.Volvo240;
+import javafx.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -108,4 +109,22 @@ public class CarController {
             }
         }
     }
+
+    void lowerBed(){
+        for (Car c : cars) {
+            if(c instanceof Scania) {
+                ((Scania) c).lowerLoad();
+            }
+        }
+    }
+
+    void raisBed(){
+        for (Car c : cars) {
+            if(c instanceof Scania) {
+                ((Scania) c).raiseLoad();
+            }
+        }
+    }
+
+
 }

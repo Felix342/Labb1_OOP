@@ -133,11 +133,11 @@ public class CarView extends JFrame{
         });
 
         liftBedButton.addActionListener( event ->{
-            carC.startCars();
+            carC.raisBed();
         });
 
         lowerBedButton.addActionListener( event ->{
-            carC.startCars();
+            carC.lowerBed();
         });
 
         // Make the frame pack all it's components by respecting the sizes if possible.

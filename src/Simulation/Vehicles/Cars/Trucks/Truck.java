@@ -29,12 +29,22 @@ public abstract class Truck extends Car implements Tiltable {
     }
 
     /**
+     * Starts engine
+     */
+    @Override
+    public void startEngine(){
+        if(bed.getDegrees() == 70){
+            super.startEngine();
+        }
+    }
+
+    /**
      * Accelerates the truck as long as degrees of its bed is not zero.
      * @param amount
      */
     @Override
     public void gas(double amount) {
-        if(bed.getDegrees() == 0) {
+        if(bed.getDegrees() == 70) {
             super.gas(amount);
         }
     }
