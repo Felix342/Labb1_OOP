@@ -11,14 +11,17 @@ import java.awt.*;
  */
 public abstract class Truck extends Car {
 
-    private AbstractBed bed;
+    protected AbstractBed bed;
 
     public Truck(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
         super(enginePower, currentSpeed, color, modelName, nrDoors);
     }
 
+    public void setBed(AbstractBed bed) {
+        this.bed = bed;
+    }
+
     /**
-     *
      * @return speedfactor of the truck.
      */
     @Override
@@ -30,19 +33,21 @@ public abstract class Truck extends Car {
      * Starts engine
      */
     @Override
-    public void startEngine(){
-        if(bed.getDegrees() == 70){
+    public void startEngine() {
+        //System.out.println("Truck deg: " + bed.getDegrees());
+        if (bed.getDegrees() == 70) {
             super.startEngine();
         }
     }
 
     /**
      * Accelerates the truck as long as degrees of its bed is not zero.
+     *
      * @param amount
      */
     @Override
     public void gas(double amount) {
-        if(bed.getDegrees() == 70) {
+        if (bed.getDegrees() == 70) {
             super.gas(amount);
         }
     }

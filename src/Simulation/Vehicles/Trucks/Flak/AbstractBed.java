@@ -37,6 +37,7 @@ public abstract class AbstractBed {
             degrees = 70;
         else
             degrees += amount;
+        //System.out.println("AbsBed " + amount + " : " + degrees);
     }
 
     protected void lowerLoad(int amount) {

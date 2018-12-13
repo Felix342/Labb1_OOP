@@ -1,6 +1,7 @@
 package Simulation.MVC;
 
 import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Vehicle;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -81,7 +82,7 @@ public class CarView extends JPanel{
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
-        this.add(gasPanel);
+        window.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2,4));
 
@@ -92,20 +93,20 @@ public class CarView extends JPanel{
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
-        this.add(controlPanel);
+        window.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(startButton);
+        window.add(startButton);
 
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(stopButton);
+        window.add(stopButton);
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
@@ -131,9 +132,9 @@ public class CarView extends JPanel{
         super.paintComponent(g);
         for (int i = 0; i < model.points.size(); i++) {
 
-            Car c = model.pointBinder.get(model.points.get(i));
+            Vehicle vehicle = model.pointBinder.get(model.points.get(i));
             try {
-                g.drawImage(model.getCarImage(c), (int) c.getX(), (int) c.getY(), null); // see javadoc for more info on the parameters
+                g.drawImage(model.getCarImage(vehicle), (int) vehicle.getX(), (int) vehicle.getY(), null); // see javadoc for more info on the parameters
             } catch (IOException e) {
                 e.printStackTrace();
             }

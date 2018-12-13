@@ -10,21 +10,18 @@ import java.awt.*;
  */
 public class Scania extends Truck implements Storeable {
 
-
     private Bed bed = new Bed(getX(), getY());
-
 
     public Scania(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color,"Scania", nrDoors);
+        setBed(bed);
     }
 
     /**
      * @return raise the load
      */
     public void raiseLoad() {
-
-        bed.raiseLoad(); //TODO sätt till 1
-
+        bed.raiseLoad();
     }
 
     /**

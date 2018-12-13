@@ -4,6 +4,7 @@ import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Saab95;
 import Simulation.Vehicles.Cars.Volvo240;
 import Simulation.Vehicles.Trucks.Scania;
+import Simulation.Vehicles.Vehicle;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -23,44 +24,46 @@ public class CarModel {
     BufferedImage scaniaImage;
 
     // To keep track of a singel cars position
-    ArrayList<Car> cars = new ArrayList<>();
-    java.util.List<Point> points = new ArrayList();
-    Map<Point, Car> pointBinder;
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    List<Point> points = new ArrayList();
+    Map<Point, Vehicle> pointBinder;
 
-    private Car currentCar;
+    private Vehicle currentVehicle;
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y, Car car){
-        currentCar = car;
+    void moveit(int x, int y, Vehicle vehicle){
+        currentVehicle = vehicle;
         if(x > 800-100){
-            car.stopEngine();
-            car.turnLeft();
-            car.turnLeft();
-            car.startEngine();
-            car.setX(800-100);
+            vehicle.stopEngine();
+            vehicle.turnLeft();
+            vehicle.turnLeft();
+            vehicle.startEngine();
+            vehicle.setX(800-100);
         }
         if(x < 0){
-            car.stopEngine();
-            car.turnLeft();
-            car.turnLeft();
-            car.startEngine();
-            car.setX(0);
+            vehicle.stopEngine();
+            vehicle.turnLeft();
+            vehicle.turnLeft();
+            vehicle.startEngine();
+            vehicle.setX(0);
         }
     }
 
-    public ArrayList<Car> getCars() {
-        return cars;
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
     }
 
     private void init(){
-        cars.add(new Volvo240(100, 0, Color.WHITE, 4));
-        cars.add(new Scania(100, 0, Color.BLACK, 2));
-        cars.add(new Saab95(200, 0, Color.RED, 2));
+        vehicles.add(new Volvo240(100, 0, Color.WHITE, 4));
+        vehicles.add(new Scania(100, 0, Color.BLACK, 2));
+        vehicles.add(new Saab95(200, 0, Color.RED, 2));
     }
 
 
     // Initializes the panel and reads the images
     public CarModel() {
+        init();
+        initMap(vehicles);
 
         try {
             // You can remove the "src\\pics" part if running outside of IntelliJ and
@@ -79,43 +82,35 @@ public class CarModel {
 
     }
 
-    public void initMap(List<Car> cars){
+    public void initMap(List<Vehicle> vehicles){
         pointBinder = new HashMap<>();
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < vehicles.size(); i++) {
 
-            cars.get(i).setY(50 + 100*i);
-            Point p = new Point((int) cars.get(i).getY(), (int) cars.get(i).getY());
+            vehicles.get(i).setY(50 + 100*i);
+            Point p = new Point((int) vehicles.get(i).getY(), (int) vehicles.get(i).getY());
             points.add(p);
-            pointBinder.put(p, cars.get(i));
+            pointBinder.put(p, vehicles.get(i));
         }
     }
 
 
-    public BufferedImage getCarImage(Car car) throws IOException {
+    public BufferedImage getCarImage(Vehicle vehicle) throws IOException {
 
-        BufferedImage carImage = null;
+        BufferedImage vehicleImage = null;
 
-        switch (car.getModelName()){
-
+        switch (vehicle.getModelName()){
             case ("Volvo240"):
-                carImage = ImageIO.read(new File("src\\Simulation\\Assets\\Volvo240.jpg"));
+                vehicleImage = ImageIO.read(new File("src\\Simulation\\Assets\\Volvo240.jpg"));
                 break;
-
             case ("Saab95"):
-                carImage = ImageIO.read(new File("src\\Simulation\\Assets\\Saab95.jpg"));
+                vehicleImage = ImageIO.read(new File("src\\Simulation\\Assets\\Saab95.jpg"));
                 break;
-
             case ("Scania"):
-                carImage = ImageIO.read(new File("src\\Simulation\\Assets\\Scania.jpg"));
+                vehicleImage = ImageIO.read(new File("src\\Simulation\\Assets\\Scania.jpg"));
                 break;
-
             default:
                 break;
-
         }
-
-        return carImage;
+        return vehicleImage;
     }
-
-
 }

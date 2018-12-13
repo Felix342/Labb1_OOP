@@ -12,10 +12,9 @@ import java.awt.*;
 public class MANG90 extends Truck {
     private Trailer trailer = new Trailer(getX(), getY());
 
-
     public MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color, "ManG90", nrDoors);
-
+        setBed(trailer);
     }
 
     /**
@@ -60,7 +59,6 @@ public class MANG90 extends Truck {
     }
 
 
-
     /**
      * raise the load
      */
@@ -80,7 +78,6 @@ public class MANG90 extends Truck {
     }
 
     /**
-     *
      * @return the trailer of the MANG90
      */
     public Trailer getTrailer() {
