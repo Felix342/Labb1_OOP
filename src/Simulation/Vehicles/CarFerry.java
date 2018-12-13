@@ -30,7 +30,7 @@ public class CarFerry extends Vehicle {
     /**
      * @return the unloaded car
      */
-    public Movable unLoad() {
+    public Storeable unLoad() {
         return trailer.unLoad(trailer.getFirstCar());
     }
 
