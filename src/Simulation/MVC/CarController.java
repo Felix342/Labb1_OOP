@@ -2,9 +2,8 @@ package Simulation.MVC;
 
 import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Saab95;
-import Simulation.Vehicles.Cars.Trucks.Scania;
+import Simulation.Vehicles.Trucks.Scania;
 import Simulation.Vehicles.Cars.Volvo240;
-import javafx.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 
 public class CarController {
     // member fields:
-
+private CarModel model;
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
@@ -30,101 +29,99 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
 
     //methods:
 
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(100, 0, Color.WHITE, 4));
-        cc.cars.add(new Scania(100, 0, Color.BLACK, 2));
-        cc.cars.add(new Saab95(200, 0, Color.RED, 2));
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc, cc.cars);
+    public CarController(CarModel model, CarView view) {
+        this.model = model;
+        this.frame = view;
+    }
+
+    private void init(){
 
         // Start the timer
-        cc.timer.start();
+        timer.start();
+        frame.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double gas = ((double) frame.gasSpinner.getValue()) / 100;
+                for (Car car : model.getCars()) {
+                    car.gas(gas);
+                }
+            }
+        });
+
+        frame.startButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                c.startEngine();
+            }
+        });
+
+        frame.stopButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                c.stopEngine();
+            }
+        });
+
+        frame.brakeButton.addActionListener( event ->{
+            double brake = ((double) frame.gasSpinner.getValue()) / 100;
+            for (Car car : model.getCars()) {
+                car.brake(brake);
+            }
+        });
+
+        frame.turboOffButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                if(c instanceof Saab95) {
+                    ((Saab95) c).setTurboOff();
+                }
+            }
+        });
+
+        frame.turboOnButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                if(c instanceof Saab95) {
+                    ((Saab95) c).setTurboOn();
+                }
+            }
+        });
+
+        frame.liftBedButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                if(c instanceof Scania) {
+                    ((Scania) c).raiseLoad();
+                }
+            }
+        });
+
+        frame.lowerBedButton.addActionListener( event ->{
+            for (Car c : model.getCars()) {
+                if(c instanceof Scania) {
+                    ((Scania) c).lowerLoad();
+                }
+            }
+        });
     }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (Car car : model.getCars()) {
                 car.move();
 
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
 
-                frame.drawPanel.moveit(x, y, car);
+                model.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
 
             }
-            frame.drawPanel.repaint();
+            frame.repaint();
         }
     }
-
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.gas(gas);
-        }
-    }
-
-    void startCars() {
-        for (Car c : cars) {
-            c.startEngine();
-        }
-    }
-
-    void stopCars() {
-        for (Car c : cars) {
-            c.stopEngine();
-        }
-    }
-
-    void brakeCar(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.brake(brake);
-        }
-    }
-
-    void turboOn(){
-        for (Car c : cars) {
-            if(c instanceof Saab95) {
-                ((Saab95) c).setTurboOn();
-            }
-        }
-    }
-
-    void turboOff(){
-        for (Car c : cars) {
-            if(c instanceof Saab95) {
-                ((Saab95) c).setTurboOff();
-            }
-        }
-    }
-
-    void lowerBed(){
-        for (Car c : cars) {
-            if(c instanceof Scania) {
-                ((Scania) c).lowerLoad();
-            }
-        }
-    }
-
-    void raisBed(){
-        for (Car c : cars) {
-            if(c instanceof Scania) {
-                ((Scania) c).raiseLoad();
-            }
-        }
-    }
-
 
 }

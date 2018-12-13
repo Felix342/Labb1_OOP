@@ -1,7 +1,7 @@
 package Simulation.Vehicles;
 
-import Simulation.Interfaces.Loadable;
-import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
+import Simulation.Interfaces.Movable;
+import Simulation.Vehicles.Trucks.Flak.Trailer;
 import Simulation.Vehicles.Cars.Car;
 
 import java.awt.*;
@@ -9,8 +9,8 @@ import java.awt.*;
 /**
  * A Ferry which can hold cars.
  */
-public class CarFerry extends Vehicle implements Loadable {
-    private Trailer trailer = new Trailer(this);
+public class CarFerry extends Vehicle {
+    private Trailer trailer = new Trailer(getX(), getY());
 
 
     public CarFerry(double enginePower, double currentSpeed, Color color, String modelName) {
@@ -22,9 +22,15 @@ public class CarFerry extends Vehicle implements Loadable {
      *
      * @param c the car to be loaded
      */
-    @Override
     public void load(Car c) {
         trailer.load(c);
+    }
+
+    /**
+     * @return the unloaded car
+     */
+    public Movable unLoad() {
+        return trailer.unLoad(trailer.getFirstCar());
     }
 
     /**
@@ -34,41 +40,23 @@ public class CarFerry extends Vehicle implements Loadable {
     public void move() {
         if (trailer.getDegrees() == 0) {
             super.move();
-            trailer.moveAllChildren();
+            trailer.moveBedWithOwner(getX(), getY());
         }
-    }
-
-    /**
-     * @return the current degree of the tilt of the load
-     */
-    @Override
-    public double getDegrees() {
-        return trailer.getDegrees();
     }
 
     /**
      * lowers the load
      */
     public void lowerLoad() {
-        trailer.lowerLoad(70);
+        trailer.lowerLoad();
     }
 
     /**
      * raise the load
      */
     public void raiseLoad() {
-        trailer.raiseLoad(70);
+        trailer.raiseLoad();
     }
-
-
-    /**
-     * @return the unloaded car
-     */
-    @Override
-    public Car unLoad() {
-        return trailer.unLoad(trailer.getFirstCar());
-    }
-
 
     /**
      * @return the speedfactor of the carferry.

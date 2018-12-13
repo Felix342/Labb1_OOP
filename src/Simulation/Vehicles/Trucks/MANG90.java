@@ -1,29 +1,26 @@
-package Simulation.Vehicles.Cars.Trucks;
+package Simulation.Vehicles.Trucks;
 
-import Simulation.Interfaces.Loadable;
+import Simulation.Interfaces.Movable;
 import Simulation.Vehicles.Cars.Car;
-import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
+import Simulation.Vehicles.Trucks.Flak.Trailer;
 
 import java.awt.*;
 
 /**
  * A truck of the model Mang90.
  */
-public class MANG90 extends Truck implements Loadable {
-    
-    private final Car[] cars = new Car[10];
-    private Trailer trailer = new Trailer(this);
+public class MANG90 extends Truck {
+    private Trailer trailer = new Trailer(getX(), getY());
 
 
     public MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color, "ManG90", nrDoors);
-        setBed(trailer);
+
     }
 
     /**
      * @param c is the car to be loaded onto the load
      */
-    @Override
     public void load(Car c) {
         trailer.load(c);
     }
@@ -33,8 +30,7 @@ public class MANG90 extends Truck implements Loadable {
      *
      * @return the unloaded car
      */
-    @Override
-    public Car unLoad() {
+    public Movable unLoad() {
         return trailer.unLoad(trailer.getLastCar());
     }
 
@@ -44,10 +40,7 @@ public class MANG90 extends Truck implements Loadable {
     @Override
     public void turnLeft() {
         super.turnLeft();
-        for (int i = 0; i < cars.length; i++) {
-            if(cars[i] != null)
-                cars[i].turnLeft();
-        }
+        trailer.turnLeft();
     }
 
     /**
@@ -56,17 +49,14 @@ public class MANG90 extends Truck implements Loadable {
     @Override
     public void turnRight() {
         super.turnRight();
-        for (int i = 0; i < cars.length; i++) {
-            if(cars[i] != null)
-                cars[i].turnRight();
-        }
+        trailer.turnRight();
     }
 
     /**
      * lowers the load
      */
     public void lowerLoad() {
-        trailer.lowerLoad(70);
+        trailer.lowerLoad();
     }
 
 
@@ -75,17 +65,17 @@ public class MANG90 extends Truck implements Loadable {
      * raise the load
      */
     public void raiseLoad() {
-        trailer.raiseLoad(70);
+        trailer.raiseLoad();
     }
 
     /**
-     * moves the Simulation.Vehicles.Cars.Trucks.Truck and the loaded cars
+     * moves the Simulation.Vehicles.Trucks.Truck and the loaded cars
      */
     @Override
     public void move() {
 
         super.move();
-        trailer.moveAllChildren();
+        trailer.moveBedWithOwner(getX(), getY());
 
     }
 

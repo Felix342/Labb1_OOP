@@ -8,15 +8,26 @@ public interface Movable {
     /**
      * Moves the car forward (relative to car).
      */
-    public void move();
+    void move();
 
     /**
      * Turns the car left (relative to car)
      */
-    public void turnLeft();
+    void turnLeft();
 
     /**
      * Turns the car right (relative to car)
      */
-    public void turnRight();
+    void turnRight();
+
+    double getX();
+
+    double getY();
+
+    void setX(double x);
+
+    void setY(double y);
+
+    void setLoaded(boolean b);
+
 }

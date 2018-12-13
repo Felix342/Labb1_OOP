@@ -1,11 +1,14 @@
 package Simulation.MVC;
 
+import Simulation.Vehicles.Cars.Car;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -16,16 +19,14 @@ import java.util.List;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JPanel{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
-    CarController carC;
-
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    private CarModel model;
 
     JPanel controlPanel = new JPanel();
+    JFrame window = new JFrame();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
@@ -36,28 +37,31 @@ public class CarView extends JFrame{
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
     JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Simulation.Vehicles.Cars.Trucks.Flak.Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Simulation.Vehicles.Cars.Trucks.Flak.Bed");
+    JButton liftBedButton = new JButton("Scania Lift Simulation.Vehicles.Trucks.Flak.Bed");
+    JButton lowerBedButton = new JButton("Lower Lift Simulation.Vehicles.Trucks.Flak.Bed");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc, List cars){
-        this.carC = cc;
+    public CarView(String framename, CarModel model) {
+        this.setDoubleBuffered(true);
+        this.setPreferredSize(new Dimension(X, Y-240));
+        this.setBackground(Color.green);
         initComponents(framename);
-        drawPanel.initMap(cars);
+        this.model = model;
+        //this.model.initMap(cars);
     }
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
 
-        this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
-        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        window.setTitle(title);
+        window.setPreferredSize(new Dimension(X,Y));
+        window.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-        this.add(drawPanel);
+        window.add(this);
 
 
 
@@ -105,51 +109,35 @@ public class CarView extends JFrame{
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
-        gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
-            }
-        });
 
-        startButton.addActionListener( event ->{
-            carC.startCars();
-        });
-
-        stopButton.addActionListener( event ->{
-            carC.stopCars();
-        });
-
-        brakeButton.addActionListener( event ->{
-            carC.brakeCar(gasAmount);
-        });
-
-        turboOffButton.addActionListener( event ->{
-            carC.turboOff();
-        });
-
-        turboOnButton.addActionListener( event ->{
-            carC.turboOn();
-        });
-
-        liftBedButton.addActionListener( event ->{
-            carC.raisBed();
-        });
-
-        lowerBedButton.addActionListener( event ->{
-            carC.lowerBed();
-        });
 
         // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
+        window.pack();
 
         // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         // Center the frame
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        window.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         // Make the frame visible
-        this.setVisible(true);
+        window.setVisible(true);
         // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    // This method is called each time the panel updates/refreshes/repaints itself
+    // TODO: Change to suit your needs.
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (int i = 0; i < model.points.size(); i++) {
+
+            Car c = model.pointBinder.get(model.points.get(i));
+            try {
+                g.drawImage(model.getCarImage(c), (int) c.getX(), (int) c.getY(), null); // see javadoc for more info on the parameters
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }

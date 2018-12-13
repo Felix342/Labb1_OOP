@@ -1,23 +1,22 @@
-package Simulation.Vehicles.Cars.Trucks.Flak;
+package Simulation.Vehicles.Trucks.Flak;
 
-import Simulation.Interfaces.Loadable;
+import Simulation.Interfaces.Movable;
 import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Cars.Car;
 
 /**
  * A type of bed which can load cars.
  */
-public class Trailer extends Bed {
-    private Car[] cars = new Car[10];
-    private Loadable owner;
+public class Trailer extends AbstractBed {
+    private Movable[] cars = new Car[10];
 
-    public Trailer(Loadable owner) {
-        super(owner);
-        this.owner = owner;
+    public Trailer(double x, double y) {
+        super(x, y);
     }
 
     /**
      * loads a car to the truck
+     *
      * @param c the car to be loaded
      */
     public void load(Car c) {
@@ -29,14 +28,51 @@ public class Trailer extends Bed {
 
     }
 
+
+    public void turnLeft(){
+        for (int i = 0; i < cars.length; i++) {
+            if(cars[i] != null)
+                cars[i].turnLeft();
+        }
+    }
+
+    public void turnRight(){
+        for (int i = 0; i < cars.length; i++) {
+            if(cars[i] != null)
+                cars[i].turnRight();
+        }
+    }
+
+
+    /**
+     * Raise the load
+     */
+    public void raiseLoad() {
+        super.raiseLoad(70);
+    }
+
+    /**
+     * Lower the load
+     */
+    public void lowerLoad() {
+        super.lowerLoad(70);
+    }
+
+    @Override
+    public void moveBedWithOwner(double x, double y){
+        setX(x);
+        setY(y);
+        moveAllChildren();
+    }
+
     /**
      * Moves all the loaded cars to the same coordinates as the trailer.
      */
-    public void moveAllChildren() {
-        for (int i = 0; i < owner.cars.length; i++) {
-            if(cars[i] != null){
-                cars[i].setX(owner.getX());
-                cars[i].setY(owner.getY());
+    private void moveAllChildren() {
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i] != null) {
+                cars[i].setX(getX());
+                cars[i].setY(getY());
             }
 
         }
@@ -47,7 +83,7 @@ public class Trailer extends Bed {
      *
      * @return the offloaded car
      */
-    public Car unLoad(Car c) {
+    public Movable unLoad(Movable c) {
         if (getDegrees() == 0) {
             int index = 0;
 
@@ -67,13 +103,12 @@ public class Trailer extends Bed {
     }
 
     /**
-     *
      * @param c the car to check the distance to
      * @return wether or not the given car is close enough to be loaded
      */
     private boolean isClose(Car c) {
-        if (c.getX() - owner.getX() <= 10 && c.getX() - owner.getX() >= -10) {
-            if (c.getY() - owner.getY() <= 10 && c.getY() - owner.getY() >= -10) {
+        if (c.getX() - getX() <= 10 && c.getX() - getX() >= -10) {
+            if (c.getY() - getY() <= 10 && c.getY() - getY() >= -10) {
                 return true;
             }
         }
@@ -81,10 +116,9 @@ public class Trailer extends Bed {
     }
 
     /**
-     *
      * @return the cars loaded on the trailer
      */
-    public Car[] getCars() {
+    public Movable[] getCars() {
         return cars;
     }
 
@@ -99,8 +133,8 @@ public class Trailer extends Bed {
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] == null) {
                 cars[i] = c;
-                c.setX(owner.getX());
-                c.setY(owner.getY());
+                c.setX(getX());
+                c.setY(getY());
                 return;
             }
         }
@@ -109,10 +143,11 @@ public class Trailer extends Bed {
 
     /**
      * Shifts the given array as far to the right as possible
-     * @param cars the array to be shifted
+     *
+     * @param cars  the array to be shifted
      * @param index
      */
-    private void shiftArrLeft(Car[] cars, int index) {
+    private void shiftArrLeft(Movable[] cars, int index) {
 
         for (int i = index + 1; i < cars.length; i++) {
             cars[i - 1] = cars[i];
@@ -124,15 +159,15 @@ public class Trailer extends Bed {
     /**
      * @return the first car in load
      */
-    public Car getFirstCar() {
+    public Movable getFirstCar() {
         return cars[0];
     }
 
     /**
      * @return the last car in load
      */
-    public Car getLastCar() {
-        Car car = null;
+    public Movable getLastCar() {
+        Movable car = null;
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] != null) {
                 car = cars[i];
