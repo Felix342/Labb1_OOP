@@ -1,14 +1,13 @@
 package Simulation.Vehicles.Trucks.Flak;
 
-import Simulation.Interfaces.Movable;
 import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Cars.Car;
 
 /**
- * A type of bed which can load cars.
+ * A type of bed which can load storeables.
  */
 public class Trailer extends AbstractBed {
-    private Storeable[] cars = new Car[10];
+    private Storeable[] storeables = new Car[10];
 
     public Trailer(double x, double y) {
         super(x, y);
@@ -30,16 +29,16 @@ public class Trailer extends AbstractBed {
 
 
     public void turnLeft(){
-        for (int i = 0; i < cars.length; i++) {
-            if(cars[i] != null)
-                cars[i].turnLeft();
+        for (int i = 0; i < storeables.length; i++) {
+            if(storeables[i] != null)
+                storeables[i].turnLeft();
         }
     }
 
     public void turnRight(){
-        for (int i = 0; i < cars.length; i++) {
-            if(cars[i] != null)
-                cars[i].turnRight();
+        for (int i = 0; i < storeables.length; i++) {
+            if(storeables[i] != null)
+                storeables[i].turnRight();
         }
     }
 
@@ -66,13 +65,13 @@ public class Trailer extends AbstractBed {
     }
 
     /**
-     * Moves all the loaded cars to the same coordinates as the trailer.
+     * Moves all the loaded storeables to the same coordinates as the trailer.
      */
     private void moveAllChildren() {
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i] != null) {
-                cars[i].setX(getX());
-                cars[i].setY(getY());
+        for (int i = 0; i < storeables.length; i++) {
+            if (storeables[i] != null) {
+                storeables[i].setX(getX());
+                storeables[i].setY(getY());
             }
 
         }
@@ -87,15 +86,15 @@ public class Trailer extends AbstractBed {
         if (getDegrees() == 0) {
             int index = 0;
 
-            for (int i = 0; i < cars.length; i++) {
-                if (cars[i] == c) {
+            for (int i = 0; i < storeables.length; i++) {
+                if (storeables[i] == c) {
                     index = i;
-                    cars[i] = null;
+                    storeables[i] = null;
                     break;
                 }
             }
 
-            shiftArrLeft(cars, index);
+            shiftArrLeft(storeables, index);
             c.setLoaded(false);
             return c;
         }
@@ -116,23 +115,15 @@ public class Trailer extends AbstractBed {
     }
 
     /**
-     * @return the cars loaded on the trailer
-     */
-    public Storeable[] getCars() {
-        return cars;
-    }
-
-
-    /**
      * Adds a car to the load
      *
      * @param c is the car to be loaded
      */
     private void addCar(Storeable c) {
 
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i] == null) {
-                cars[i] = c;
+        for (int i = 0; i < storeables.length; i++) {
+            if (storeables[i] == null) {
+                storeables[i] = c;
                 c.setX(getX());
                 c.setY(getY());
                 return;
@@ -160,20 +151,20 @@ public class Trailer extends AbstractBed {
      * @return the first car in load
      */
     public Storeable getFirstCar() {
-        return cars[0];
+        return storeables[0];
     }
 
     /**
      * @return the last car in load
      */
     public Storeable getLastCar() {
-        Storeable car = null;
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i] != null) {
-                car = cars[i];
+        Storeable storeable = null;
+        for (int i = 0; i < storeables.length; i++) {
+            if (storeables[i] != null) {
+                storeable = storeables[i];
             }
         }
-        return car;
+        return storeable;
     }
 
 }

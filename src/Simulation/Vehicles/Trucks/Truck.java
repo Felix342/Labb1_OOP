@@ -2,7 +2,6 @@ package Simulation.Vehicles.Trucks;
 
 import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Trucks.Flak.AbstractBed;
-import Simulation.Vehicles.Trucks.Flak.Bed;
 
 import java.awt.*;
 

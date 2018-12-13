@@ -1,8 +1,6 @@
 package Simulation.Vehicles.Trucks;
 
-import Simulation.Interfaces.Movable;
 import Simulation.Interfaces.Storeable;
-import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Trucks.Flak.Trailer;
 
 import java.awt.*;
@@ -19,7 +17,7 @@ public class MANG90 extends Truck {
     }
 
     /**
-     * @param c is the car to be loaded onto the load
+     * @param s is the car to be loaded onto the load
      */
     public void load(Storeable s) {
         trailer.load(s);
@@ -74,17 +72,10 @@ public class MANG90 extends Truck {
      */
     @Override
     public void move() {
-
-        super.move();
-        trailer.moveBedWithOwner(getX(), getY());
-
-    }
-
-    /**
-     * @return the trailer of the MANG90
-     */
-    public Trailer getTrailer() {
-        return trailer;
+        if(trailer.getDegrees() == 70) {
+            super.move();
+            trailer.moveBedWithOwner(getX(), getY());
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package Simulation.Vehicles;
 
 import Simulation.Interfaces.Movable;
+import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Trucks.Flak.Trailer;
 import Simulation.Vehicles.Cars.Car;
 
@@ -20,10 +21,10 @@ public class CarFerry extends Vehicle {
     /**
      * loads a car to the ferry
      *
-     * @param c the car to be loaded
+     * @param s the car to be loaded
      */
-    public void load(Car c) {
-        trailer.load(c);
+    public void load(Storeable s) {
+        trailer.load(s);
     }
 
     /**
@@ -38,7 +39,7 @@ public class CarFerry extends Vehicle {
      */
     @Override
     public void move() {
-        if (trailer.getDegrees() == 0) {
+        if (trailer.getDegrees() == 70) {
             super.move();
             trailer.moveBedWithOwner(getX(), getY());
         }
@@ -64,13 +65,5 @@ public class CarFerry extends Vehicle {
     @Override
     public double getSpeedFactor() {
         return getEnginePower() * 0.01;
-    }
-
-    /**
-     *
-     * @return the trailer of the CarFerry
-     */
-    public Trailer getTrailer() {
-        return trailer;
     }
 }
