@@ -4,6 +4,7 @@ import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Cars.Saab95;
 import Simulation.Vehicles.Cars.Volvo240;
 import Simulation.Vehicles.Trucks.Scania;
+import Simulation.Vehicles.Trucks.Truck;
 import Simulation.Vehicles.Vehicle;
 
 import javax.imageio.ImageIO;
@@ -28,11 +29,9 @@ public class CarModel {
     List<Point> points = new ArrayList();
     Map<Point, Vehicle> pointBinder;
 
-    private Vehicle currentVehicle;
 
     // TODO: Make this genereal for all cars
     void moveit(int x, int y, Vehicle vehicle){
-        currentVehicle = vehicle;
         if(x > 800-100){
             vehicle.stopEngine();
             vehicle.turnLeft();
@@ -113,4 +112,64 @@ public class CarModel {
         }
         return vehicleImage;
     }
+
+
+    void gas(int amount) {
+        double gas = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.gas(gas);
+        }
+    }
+
+    void startCars() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+
+    void stopCars() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
+    }
+
+    void brakeCar(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.brake(brake);
+        }
+    }
+
+    void turboOn(){
+        for (Vehicle vehicle : vehicles) {
+            if(vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff(){
+        for (Vehicle vehicle : vehicles) {
+            if(vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
+            }
+        }
+    }
+
+    void lowerBed(){
+        for (Vehicle vehicle : vehicles) {
+            if(vehicle instanceof Truck) {
+                ((Truck) vehicle).lowerLoad();
+            }
+        }
+    }
+
+    void raiseBed(){
+        for (Vehicle vehicle : vehicles) {
+            if(vehicle instanceof Truck) {
+                ((Truck) vehicle).raiseLoad();
+            }
+        }
+    }
+
 }

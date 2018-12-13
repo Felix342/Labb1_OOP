@@ -1,6 +1,7 @@
 package Simulation.Vehicles.Trucks;
 
 import Simulation.Interfaces.Movable;
+import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Cars.Car;
 import Simulation.Vehicles.Trucks.Flak.Trailer;
 
@@ -20,8 +21,8 @@ public class MANG90 extends Truck {
     /**
      * @param c is the car to be loaded onto the load
      */
-    public void load(Car c) {
-        trailer.load(c);
+    public void load(Storeable s) {
+        trailer.load(s);
     }
 
     /**
@@ -29,7 +30,7 @@ public class MANG90 extends Truck {
      *
      * @return the unloaded car
      */
-    public Movable unLoad() {
+    public Storeable unLoad() {
         return trailer.unLoad(trailer.getLastCar());
     }
 
@@ -54,6 +55,7 @@ public class MANG90 extends Truck {
     /**
      * lowers the load
      */
+    @Override
     public void lowerLoad() {
         trailer.lowerLoad();
     }
@@ -62,6 +64,7 @@ public class MANG90 extends Truck {
     /**
      * raise the load
      */
+    @Override
     public void raiseLoad() {
         trailer.raiseLoad();
     }

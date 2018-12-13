@@ -20,6 +20,7 @@ public class Scania extends Truck implements Storeable {
     /**
      * @return raise the load
      */
+    @Override
     public void raiseLoad() {
         bed.raiseLoad();
     }
@@ -27,6 +28,7 @@ public class Scania extends Truck implements Storeable {
     /**
      * @return lower the load
      */
+    @Override
     public void lowerLoad() {
         bed.lowerLoad();
     }

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * A class describing a car of the model Saab95.
  */
-public class Saab95 extends Car implements Storeable {
+public class Saab95 extends Car {
 
     private boolean turboOn;
 

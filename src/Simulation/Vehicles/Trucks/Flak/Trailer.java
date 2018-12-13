@@ -8,7 +8,7 @@ import Simulation.Vehicles.Cars.Car;
  * A type of bed which can load cars.
  */
 public class Trailer extends AbstractBed {
-    private Movable[] cars = new Car[10];
+    private Storeable[] cars = new Car[10];
 
     public Trailer(double x, double y) {
         super(x, y);
@@ -19,7 +19,7 @@ public class Trailer extends AbstractBed {
      *
      * @param c the car to be loaded
      */
-    public void load(Car c) {
+    public void load(Storeable c) {
 
         if (c instanceof Storeable && isClose(c) && getDegrees() == 0 && !c.isLoaded()) {
             addCar(c);
@@ -83,7 +83,7 @@ public class Trailer extends AbstractBed {
      *
      * @return the offloaded car
      */
-    public Movable unLoad(Movable c) {
+    public Storeable unLoad(Storeable c) {
         if (getDegrees() == 0) {
             int index = 0;
 
@@ -106,7 +106,7 @@ public class Trailer extends AbstractBed {
      * @param c the car to check the distance to
      * @return wether or not the given car is close enough to be loaded
      */
-    private boolean isClose(Car c) {
+    private boolean isClose(Storeable c) {
         if (c.getX() - getX() <= 10 && c.getX() - getX() >= -10) {
             if (c.getY() - getY() <= 10 && c.getY() - getY() >= -10) {
                 return true;
@@ -118,7 +118,7 @@ public class Trailer extends AbstractBed {
     /**
      * @return the cars loaded on the trailer
      */
-    public Movable[] getCars() {
+    public Storeable[] getCars() {
         return cars;
     }
 
@@ -128,7 +128,7 @@ public class Trailer extends AbstractBed {
      *
      * @param c is the car to be loaded
      */
-    private void addCar(Car c) {
+    private void addCar(Storeable c) {
 
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] == null) {
@@ -147,7 +147,7 @@ public class Trailer extends AbstractBed {
      * @param cars  the array to be shifted
      * @param index
      */
-    private void shiftArrLeft(Movable[] cars, int index) {
+    private void shiftArrLeft(Storeable[] cars, int index) {
 
         for (int i = index + 1; i < cars.length; i++) {
             cars[i - 1] = cars[i];
@@ -159,15 +159,15 @@ public class Trailer extends AbstractBed {
     /**
      * @return the first car in load
      */
-    public Movable getFirstCar() {
+    public Storeable getFirstCar() {
         return cars[0];
     }
 
     /**
      * @return the last car in load
      */
-    public Movable getLastCar() {
-        Movable car = null;
+    public Storeable getLastCar() {
+        Storeable car = null;
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] != null) {
                 car = cars[i];

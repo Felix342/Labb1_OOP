@@ -52,4 +52,9 @@ public abstract class Truck extends Car {
         }
     }
 
+    public abstract void raiseLoad();
+
+    public abstract void lowerLoad();
+
+
 }

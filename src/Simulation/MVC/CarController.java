@@ -1,7 +1,5 @@
 package Simulation.MVC;
 
-import Simulation.Vehicles.Cars.Saab95;
-import Simulation.Vehicles.Trucks.Scania;
 import Simulation.Vehicles.Vehicle;
 
 import javax.swing.*;
@@ -43,63 +41,37 @@ public class CarController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int i = (int) frame.gasSpinner.getValue(); //TODO AAAAAAAAAAAAAAAAA
-                double gas = i / 100;
-                for (Vehicle vehicle : model.getVehicles()) {
-                    vehicle.gas(gas);
-                }
+                model.gas(i);
             }
         });
 
         frame.startButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                vehicle.startEngine();
-            }
+            model.startCars();
         });
 
         frame.stopButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                vehicle.stopEngine();
-            }
+            model.stopCars();
         });
 
         frame.brakeButton.addActionListener(event -> {
             int i = (int) frame.gasSpinner.getValue();  //TODO AAAAAAAAAAAAAAAAA
-            double brake = i / 100;
-            for (Vehicle vehicle : model.getVehicles()) {
-                vehicle.brake(brake);
-            }
+            model.brakeCar(i);
         });
 
         frame.turboOffButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                if (vehicle instanceof Saab95) {
-                    ((Saab95) vehicle).setTurboOff();
-                }
-            }
+            model.turboOff();
         });
 
         frame.turboOnButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                if (vehicle instanceof Saab95) {
-                    ((Saab95) vehicle).setTurboOn();
-                }
-            }
+            model.turboOn();
         });
 
         frame.liftBedButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                if (vehicle instanceof Scania) {
-                    ((Scania) vehicle).raiseLoad();
-                }
-            }
+            model.raiseBed();
         });
 
         frame.lowerBedButton.addActionListener(event -> {
-            for (Vehicle vehicle : model.getVehicles()) {
-                if (vehicle instanceof Scania) {
-                    ((Scania) vehicle).lowerLoad();
-                }
-            }
+            model.lowerBed();
         });
     }
 
@@ -109,16 +81,11 @@ public class CarController {
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
             for (Vehicle vehicle : model.getVehicles()) {
                 vehicle.move();
-
                 int x = (int) Math.round(vehicle.getX());
                 int y = (int) Math.round(vehicle.getY());
-
                 model.moveit(x, y, vehicle);
-                // repaint() calls the paintComponent method of the panel
-
             }
             frame.repaint();
         }

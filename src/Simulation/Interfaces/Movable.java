@@ -3,7 +3,6 @@ package Simulation.Interfaces;
 /**
  * An interface for all movable objects. Has the ability to move, and turn left or right.
  */
-
 public interface Movable {
     /**
      * Moves the car forward (relative to car).
@@ -28,6 +27,5 @@ public interface Movable {
 
     void setY(double y);
 
-    void setLoaded(boolean b);
 
 }
