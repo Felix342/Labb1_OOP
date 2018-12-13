@@ -1,3 +1,5 @@
+package Simulation.Interfaces;
+
 /**
  * An interface for all movable objects. Has the ability to move, and turn left or right.
  */

@@ -1,3 +1,5 @@
+import Simulation.Vehicles.Cars.Trucks.Flak.Bed;
+import Simulation.Vehicles.Cars.Trucks.MANG90;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -8,7 +10,7 @@ class BedTest {
 
     @Test
     void getDegrees() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
         Bed b = new Bed(m);
 
 
@@ -17,7 +19,7 @@ class BedTest {
 
     @Test
     void raiseLoad() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
         Bed b = new Bed(m);
         b.raiseLoad(1);
 
@@ -27,7 +29,7 @@ class BedTest {
 
     @Test
     void lowerLoad() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
         Bed b = new Bed(m);
         b.lowerLoad(64);
 

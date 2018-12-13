@@ -1,3 +1,7 @@
+package Simulation.Vehicles.Cars.Trucks.Flak;
+
+import Simulation.Interfaces.Tiltable;
+
 /**
  * A platform which can raise and lower its load. (Flak)
  */
@@ -22,6 +26,7 @@ public class Bed {
      */
     public void raiseLoad(int amount) {
         if(owner.getCurrentSpeed() == 0) {
+            System.out.println("LoadRaised");
             if (degrees + amount >= 70)
                 degrees = 70;
             else
@@ -34,6 +39,7 @@ public class Bed {
      */
     public void lowerLoad(int amount) {
         if (owner.getCurrentSpeed() == 0) {
+            System.out.println("LoadLowered");
             if (degrees - amount <= 0)
                 degrees = 0;
             else

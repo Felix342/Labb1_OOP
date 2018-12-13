@@ -1,3 +1,7 @@
+import Simulation.Vehicles.CarFerry;
+import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Saab95;
+import Simulation.Vehicles.Vehicle;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -29,7 +33,7 @@ class CarFerryTest {
     @Test
     void load() {
         CarFerry c = new CarFerry(100, 0, Color.black,"Thanos");
-        Car c1 = new Saab95(1,0,Color.black,"Test",3);
+        Car c1 = new Saab95(1,0,Color.black,3);
 
         c.load(c1);
 
@@ -42,7 +46,7 @@ class CarFerryTest {
     @Test
     void unLoad() {
         CarFerry c = new CarFerry(100, 0, Color.black,"Thanos");
-        Car c1 = new Saab95(1,0,Color.black,"Test",3);
+        Car c1 = new Saab95(1,0,Color.black,3);
         c.load(c1);
         assertEquals(c1, c.unLoad());
     }

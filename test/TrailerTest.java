@@ -1,3 +1,7 @@
+import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Trucks.MANG90;
+import Simulation.Vehicles.Cars.Saab95;
+import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -8,8 +12,8 @@ class TrailerTest {
 
     @Test
     void load() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
-        Car c = new Saab95(1,0,Color.black,"Test",3);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
+        Car c = new Saab95(1,0,Color.black,3);
 
         m.load(c);
 
@@ -19,8 +23,8 @@ class TrailerTest {
 
     @Test
     void moveAllChildren() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
-        Car c = new Saab95(1,0,Color.black,"Test",3);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
+        Car c = new Saab95(1,0,Color.black,3);
         m.startEngine();
         m.load(c);
 
@@ -35,16 +39,16 @@ class TrailerTest {
 
     @Test
     void unLoad() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
-        Car c = new Saab95(1,0,Color.black,"Test",3);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
+        Car c = new Saab95(1,0,Color.black,3);
         m.load(c);
         assertEquals(c, m.unLoad());
     }
 
     @Test
     void getFirstCar() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
-        Car c = new Saab95(1,0,Color.black,"Test",3);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
+        Car c = new Saab95(1,0,Color.black,3);
         Trailer t = m.getTrailer();
         m.load(c);
         assertEquals(c, t.getFirstCar());
@@ -52,8 +56,8 @@ class TrailerTest {
 
     @Test
     void getLastCar() {
-        MANG90 m = new MANG90(100, 0, Color.black,"Thanos",2);
-        Car c = new Saab95(1,0,Color.black,"Test",3);
+        MANG90 m = new MANG90(100, 0, Color.black,2);
+        Car c = new Saab95(1,0,Color.black,3);
         Trailer t = m.getTrailer();
         m.load(c);
         assertEquals(c, t.getLastCar());

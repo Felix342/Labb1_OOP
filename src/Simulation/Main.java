@@ -1,3 +1,5 @@
+package Simulation;
+
 import javax.swing.*;
 
 /**
@@ -12,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("I am Darth Vader Father yours is.. Lucky Gabe.");
+        Main h = new Main();
 
     }
 }

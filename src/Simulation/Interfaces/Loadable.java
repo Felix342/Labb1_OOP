@@ -1,10 +1,14 @@
+package Simulation.Interfaces;
+
+import Simulation.Vehicles.Cars.Car;
+
 /**
  * Describes something that can load a car.
  */
 public interface Loadable extends Tiltable {
-    Car[] cars = new Car[10];
+   // Car[] cars = new Car[10];
    //TODO Klura ut varför och hur? Yolo man-
-    // Bed bed = null;
+    // Simulation.Vehicles.Cars.Trucks.Flak.Bed bed = null;
 
     /**
      * Lowers the load

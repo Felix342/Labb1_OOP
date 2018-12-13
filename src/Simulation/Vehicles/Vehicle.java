@@ -1,20 +1,26 @@
+package Simulation.Vehicles;
+
+import Simulation.Interfaces.Movable;
+import Simulation.Vehicles.Cars.Car;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
  * A vehicle that has a position.
  */
-public abstract class Vehicle implements Movable{
+public abstract class Vehicle implements Movable {
 
-
+    private boolean isLoaded = false;
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private Vehicle.Direction direction = Car.Direction.FORWARD;
+    private Vehicle.Direction direction = Direction.RIGHT;
     public static ArrayList<Vehicle.Direction> directions = initDirections();
 
-    private double x = 250;
+    private double x = 0;
     private double y = 250;
 
 
@@ -48,6 +54,9 @@ public abstract class Vehicle implements Movable{
      * Adds currentSpeed to x and y according to direction.
      */
     public void move() {
+        if(isLoaded())
+            return;
+
         switch (direction) {
             case LEFT:
                 x -= getCurrentSpeed();
@@ -64,6 +73,22 @@ public abstract class Vehicle implements Movable{
             default:
                 break;
         }
+    }
+
+    /**
+     *
+     * @return if the car is loaded
+     */
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    /**
+     * sets the status of the vehichle
+     * @param loaded
+     */
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
     }
 
     /**
@@ -245,4 +270,5 @@ public abstract class Vehicle implements Movable{
     public double getY() {
         return y;
     }
+
 }

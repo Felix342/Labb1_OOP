@@ -1,3 +1,9 @@
+package Simulation.Vehicles;
+
+import Simulation.Interfaces.Loadable;
+import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
+import Simulation.Vehicles.Cars.Car;
+
 import java.awt.*;
 
 /**

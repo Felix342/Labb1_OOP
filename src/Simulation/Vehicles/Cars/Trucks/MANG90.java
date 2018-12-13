@@ -1,16 +1,22 @@
+package Simulation.Vehicles.Cars.Trucks;
+
+import Simulation.Interfaces.Loadable;
+import Simulation.Vehicles.Cars.Car;
+import Simulation.Vehicles.Cars.Trucks.Flak.Trailer;
+
 import java.awt.*;
 
 /**
  * A truck of the model Mang90.
  */
 public class MANG90 extends Truck implements Loadable {
-
+    
     private final Car[] cars = new Car[10];
     private Trailer trailer = new Trailer(this);
 
 
-    public MANG90(double enginePower, double currentSpeed, Color color, String modelName, int nrDoors) {
-        super(enginePower, currentSpeed, color, modelName, nrDoors);
+    public MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
+        super(enginePower, currentSpeed, color, "ManG90", nrDoors);
         setBed(trailer);
     }
 
@@ -73,7 +79,7 @@ public class MANG90 extends Truck implements Loadable {
     }
 
     /**
-     * moves the Truck and the loaded cars
+     * moves the Simulation.Vehicles.Cars.Trucks.Truck and the loaded cars
      */
     @Override
     public void move() {
