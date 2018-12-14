@@ -128,9 +128,8 @@ public class CarView extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (int i = 0; i < model.points.size(); i++) {
+        for (Vehicle vehicle : model.getVehicles()) {
 
-            Vehicle vehicle = model.pointBinder.get(model.points.get(i));
             try {
                 g.drawImage(model.getCarImage(vehicle), (int) vehicle.getX(), (int) vehicle.getY(), null); // see javadoc for more info on the parameters
             } catch (IOException e) {

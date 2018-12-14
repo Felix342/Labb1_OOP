@@ -1,8 +1,5 @@
 package Simulation.MVC;
 
-import Simulation.Interfaces.Iterator;
-import Simulation.Vehicles.Vehicle;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

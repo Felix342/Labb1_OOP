@@ -14,12 +14,10 @@ import java.util.*;
 import java.util.List;
 
 public class CarModel {
-    // To keep track of a singel cars position
+    // To keep track of a single cars position
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
-    private static int ÄNDRANAMN = 0;
-
-    List<Point> points = new ArrayList();
-    Map<Point, Vehicle> pointBinder;
+    private static int offset = 0;
+    private static final Random rand = new Random();
 
     void moveit(int x, int y, Vehicle vehicle) {
         if (x > 800 - 100) {
@@ -40,48 +38,42 @@ public class CarModel {
 
     public void removeCar(){
         if(vehicles.size() > 0){
-            Vehicle vehicle = vehicles.get(vehicles.size()-1);
-            vehicles.remove(vehicle);
-            pointBinder.remove(vehicle);
-            ÄNDRANAMN--;
+            vehicles.remove(vehicles.size()-1);
+            offset--;
         }
     }
 
-    public void addCar() {
+    public void addCar(){
+
+        switch (rand.nextInt(3)){
+            case 0:
+                addCar(VehicleFactory.createScania(200, 0, Color.RED, 2));
+                break;
+            case  1:
+                addCar(VehicleFactory.createSaab95(200, 0, Color.RED, 2));
+                break;
+            case 2:
+                addCar(VehicleFactory.createVolvo240(200, 0, Color.RED, 2));
+                break;
+
+                default:
+                    break;
+        }
+
+    }
+
+    public void addCar(Vehicle vehicle) {
         if(vehicles.size() < 10) {
-            Vehicle vehicle = VehicleFactory.createVolvo240(600, 0, Color.WHITE, 4);
             vehicles.add(vehicle);
-            addCarToMap(vehicle);
+            vehicle.setY(50 + 70 * offset);
+            offset++;
         }
     }
 
-
-    // Initializes the panel and reads the images
     public CarModel() {
-
-        vehicles.add(VehicleFactory.createVolvo240(100, 0, Color.WHITE, 4));
-        vehicles.add(VehicleFactory.createSaab95(100, 0, Color.BLACK, 2));
-        vehicles.add(VehicleFactory.createScania(200, 0, Color.RED, 2));
-
-        initMap(vehicles);
-
-    }
-
-    private void addCarToMap(Vehicle vehicle) {
-        vehicle.setY(50 + 100 * ÄNDRANAMN);
-        ÄNDRANAMN++;
-        Point p = new Point((int) vehicle.getY(), (int) vehicle.getY());
-        points.add(p);
-        pointBinder.put(p, vehicle);
-    }
-
-    private void initMap(List<Vehicle> vehicles) {
-
-        pointBinder = new HashMap<>();
-        for (int i = 0; i < vehicles.size(); i++) {
-            addCarToMap(vehicles.get(i));
-        }
-
+        addCar(VehicleFactory.createScania(200, 0, Color.RED, 2));
+        addCar(VehicleFactory.createSaab95(100, 0, Color.BLACK, 2));
+        addCar(VehicleFactory.createVolvo240(100, 0, Color.WHITE, 4));
     }
 
 
@@ -105,6 +97,13 @@ public class CarModel {
         return vehicleImage;
     }
 
+    public List<Vehicle> getVehicles() {
+        List<Vehicle> vehiclesCopy = new ArrayList<>();
+        for (Vehicle v: vehicles) {
+            vehiclesCopy.add(v);
+        }
+        return vehiclesCopy;
+    }
 
     void gas(int amount) {
         double gas = ((double) amount) / 100;
