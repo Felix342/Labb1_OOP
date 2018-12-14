@@ -1,9 +1,10 @@
-package Simulation.MVC;
+package Simulation.Model;
 
-import Simulation.Vehicles.Cars.Saab95;
-import Simulation.Vehicles.Trucks.Truck;
-import Simulation.Vehicles.Vehicle;
-import Simulation.Vehicles.VehicleFactory;
+import Simulation.Model.Vehicles.Cars.Saab95;
+import Simulation.Model.Vehicles.Trucks.Truck;
+import Simulation.Model.Vehicles.Vehicle;
+import Simulation.Model.Vehicles.VehicleFactory;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -105,33 +106,33 @@ public class CarModel {
         return vehiclesCopy;
     }
 
-    void gas(int amount) {
+    public  void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle vehicle : vehicles) {
             vehicle.gas(gas);
         }
     }
 
-    void startCars() {
+    public void startCars() {
         for (Vehicle vehicle : vehicles) {
             vehicle.startEngine();
         }
     }
 
-    void stopCars() {
+    public void stopCars() {
         for (Vehicle vehicle : vehicles) {
             vehicle.stopEngine();
         }
     }
 
-    void brakeCar(int amount) {
+    public void brakeCar(int amount) {
         double brake = ((double) amount) / 100;
         for (Vehicle vehicle : vehicles) {
             vehicle.brake(brake);
         }
     }
 
-    void turboOn() {
+    public  void turboOn() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Saab95) {
                 ((Saab95) vehicle).setTurboOn();
@@ -139,7 +140,7 @@ public class CarModel {
         }
     }
 
-    void turboOff() {
+    public void turboOff() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Saab95) {
                 ((Saab95) vehicle).setTurboOff();
@@ -147,7 +148,7 @@ public class CarModel {
         }
     }
 
-    void lowerBed() {
+    public void lowerBed() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Truck) {
                 ((Truck) vehicle).lowerLoad();
@@ -155,7 +156,7 @@ public class CarModel {
         }
     }
 
-    void raiseBed() {
+    public void raiseBed() {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof Truck) {
                 ((Truck) vehicle).raiseLoad();

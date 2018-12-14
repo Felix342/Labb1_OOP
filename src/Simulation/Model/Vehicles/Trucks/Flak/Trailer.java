@@ -1,7 +1,7 @@
-package Simulation.Vehicles.Trucks.Flak;
+package Simulation.Model.Vehicles.Trucks.Flak;
 
-import Simulation.Interfaces.Storeable;
-import Simulation.Vehicles.Cars.Car;
+import Simulation.Model.Storeable;
+import Simulation.Model.Vehicles.Cars.Car;
 
 /**
  * A type of bed which can load storeables.

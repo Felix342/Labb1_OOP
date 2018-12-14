@@ -1,7 +1,7 @@
-package Simulation.Vehicles.Trucks;
+package Simulation.Model.Vehicles.Trucks;
 
-import Simulation.Interfaces.Storeable;
-import Simulation.Vehicles.Trucks.Flak.Trailer;
+import Simulation.Model.Storeable;
+import Simulation.Model.Vehicles.Trucks.Flak.Trailer;
 
 import java.awt.*;
 
@@ -73,7 +73,7 @@ public class MANG90 extends Truck {
     }
 
     /**
-     * moves the Simulation.Vehicles.Trucks.Truck and the loaded cars
+     * moves the Simulation.Model.Vehicles.Trucks.Truck and the loaded cars
      */
     @Override
     public void move() {

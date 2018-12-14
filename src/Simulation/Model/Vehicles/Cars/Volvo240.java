@@ -1,6 +1,4 @@
-package Simulation.Vehicles.Cars;
-
-import Simulation.Interfaces.Storeable;
+package Simulation.Model.Vehicles.Cars;
 
 import java.awt.*;
 

@@ -1,8 +1,9 @@
-package Simulation.Interfaces;
+package Simulation.Model;
 
-public interface Storeable{
-
-
+/**
+ * An interface for all movable objects. Has the ability to move, and turn left or right.
+ */
+public interface Movable {
     /**
      * Moves the car forward (relative to car).
      */
@@ -18,11 +19,6 @@ public interface Storeable{
      */
     void turnRight();
 
-
-    void setLoaded(boolean b);
-
-    boolean isLoaded();
-
     double getX();
 
     double getY();
@@ -30,5 +26,6 @@ public interface Storeable{
     void setX(double x);
 
     void setY(double y);
+
 
 }

@@ -1,6 +1,6 @@
-package Simulation.Vehicles.Cars;
+package Simulation.Model.Vehicles.Cars;
 
-import Simulation.Vehicles.Vehicle;
+import Simulation.Model.Vehicles.Vehicle;
 
 import java.awt.*;
 

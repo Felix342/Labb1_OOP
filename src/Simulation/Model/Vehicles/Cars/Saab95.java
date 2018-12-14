@@ -1,11 +1,6 @@
-package Simulation.Vehicles.Cars;
+package Simulation.Model.Vehicles.Cars;
 
-import Simulation.Interfaces.Storeable;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * A class describing a car of the model Saab95.

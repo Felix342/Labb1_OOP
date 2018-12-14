@@ -1,12 +1,9 @@
-package Simulation.Vehicles;
+package Simulation.Model.Vehicles;
 
-import Simulation.Interfaces.Movable;
-import Simulation.Vehicles.Cars.Car;
+import Simulation.Model.Movable;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * A vehicle that has a position.

@@ -1,4 +1,4 @@
-package Simulation.Vehicles.Trucks.Flak;
+package Simulation.Model.Vehicles.Trucks.Flak;
 
 public abstract class AbstractBed {
     private double x;
@@ -32,7 +32,6 @@ public abstract class AbstractBed {
     }
 
     protected void raiseLoad(int amount) {
-        System.out.println("LoadRaised");
         if (degrees + amount >= 70)
             degrees = 70;
         else
@@ -41,7 +40,6 @@ public abstract class AbstractBed {
     }
 
     protected void lowerLoad(int amount) {
-        System.out.println("LoadLowered");
         if (degrees - amount <= 0)
             degrees = 0;
         else

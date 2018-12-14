@@ -1,4 +1,4 @@
-package Simulation.Vehicles.Trucks.Flak;
+package Simulation.Model.Vehicles.Trucks.Flak;
 
 /**
  * A platform which can raise and lower its load. (Flak)

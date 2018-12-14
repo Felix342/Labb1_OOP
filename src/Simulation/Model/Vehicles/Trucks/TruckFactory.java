@@ -1,4 +1,4 @@
-package Simulation.Vehicles.Trucks;
+package Simulation.Model.Vehicles.Trucks;
 
 import java.awt.*;
 

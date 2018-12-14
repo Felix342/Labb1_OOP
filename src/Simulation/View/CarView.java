@@ -1,16 +1,13 @@
-package Simulation.MVC;
+package Simulation.View;
 
-import Simulation.Vehicles.Cars.Car;
-import Simulation.Vehicles.Vehicle;
+import Simulation.Model.CarModel;
+import Simulation.Model.Vehicles.Vehicle;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -23,28 +20,28 @@ public class CarView extends JPanel{
     private static final int X = 800;
     private static final int Y = 800;
 
-    private CarModel model;
+    CarModel model;
 
-    JPanel controlPanel = new JPanel();
-    JFrame window = new JFrame();
+    public JPanel controlPanel = new JPanel();
+    public JFrame window = new JFrame();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
+    public JPanel gasPanel = new JPanel();
+    public JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    public JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Simulation.Vehicles.Trucks.Flak.Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Simulation.Vehicles.Trucks.Flak.Bed");
+    public JButton gasButton = new JButton("Gas");
+    public JButton brakeButton = new JButton("Brake");
+    public JButton turboOnButton = new JButton("Saab Turbo on");
+    public JButton turboOffButton = new JButton("Saab Turbo off");
+    public JButton liftBedButton = new JButton("Scania Lift Simulation.Model.Vehicles.Trucks.Flak.Bed");
+    public JButton lowerBedButton = new JButton("Lower Lift Simulation.Model.Vehicles.Trucks.Flak.Bed");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    public JButton startButton = new JButton("Start all cars");
+    public JButton stopButton = new JButton("Stop all cars");
 
-    JButton addCarButton = new JButton("Add Car");
-    JButton removeCarButton = new JButton("Remove Car");
+    public JButton addCarButton = new JButton("Add Car");
+    public JButton removeCarButton = new JButton("Remove Car");
 
     // Constructor
     public CarView(String framename, CarModel model) {
@@ -123,19 +120,5 @@ public class CarView extends JPanel{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    // This method is called each time the panel updates/refreshes/repaints itself
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
 
-        for (Vehicle vehicle : model.getVehicles()) {
-
-            try {
-                g.drawImage(model.getCarImage(vehicle), (int) vehicle.getX(), (int) vehicle.getY(), null); // see javadoc for more info on the parameters
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
 }

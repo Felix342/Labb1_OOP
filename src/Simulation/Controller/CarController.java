@@ -1,4 +1,7 @@
-package Simulation.MVC;
+package Simulation.Controller;
+
+import Simulation.Model.CarModel;
+import Simulation.View.CarView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -78,8 +81,6 @@ public class CarController {
         frame.removeCarButton.addActionListener(event -> {
             model.removeCar();
         });
-
-
     }
 
     private class TimerListener implements ActionListener {
