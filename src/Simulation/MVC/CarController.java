@@ -1,5 +1,6 @@
 package Simulation.MVC;
 
+import Simulation.Interfaces.Iterator;
 import Simulation.Vehicles.Vehicle;
 
 import javax.swing.*;
@@ -25,7 +26,6 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
 
-    //methods:
 
 
     public CarController(CarModel model, CarView view) {
@@ -40,7 +40,7 @@ public class CarController {
         frame.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = (int) frame.gasSpinner.getValue(); //TODO AAAAAAAAAAAAAAAAA
+                int i = (int) frame.gasSpinner.getValue();
                 model.gas(i);
             }
         });
@@ -54,7 +54,7 @@ public class CarController {
         });
 
         frame.brakeButton.addActionListener(event -> {
-            int i = (int) frame.gasSpinner.getValue();  //TODO AAAAAAAAAAAAAAAAA
+            int i = (int) frame.gasSpinner.getValue();
             model.brakeCar(i);
         });
 
@@ -73,20 +73,21 @@ public class CarController {
         frame.lowerBedButton.addActionListener(event -> {
             model.lowerBed();
         });
+
+        frame.addCarButton.addActionListener(event -> {
+            model.addCar();
+        });
+
+        frame.removeCarButton.addActionListener(event -> {
+            model.removeCar();
+        });
+
+
     }
 
-
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle vehicle : model.getVehicles()) {
-                vehicle.move();
-                int x = (int) Math.round(vehicle.getX());
-                int y = (int) Math.round(vehicle.getY());
-                model.moveit(x, y, vehicle);
-            }
+            model.update();
             frame.repaint();
         }
     }

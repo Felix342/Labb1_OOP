@@ -14,9 +14,13 @@ public class Saab95 extends Car {
 
     private boolean turboOn;
 
-    public Saab95(double enginePower, double currentSpeed, Color color, int nrDoors) {
+    private Saab95(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color, "Saab95", nrDoors);
         setTurboOff();
+    }
+
+    static Saab95 createSaab95(double enginePower, double currentSpeed, Color color, int nrDoors){
+        return new Saab95(enginePower, currentSpeed, color, nrDoors);
     }
 
     /**

@@ -12,10 +12,15 @@ public class Scania extends Truck implements Storeable {
 
     private Bed bed = new Bed(getX(), getY());
 
-    public Scania(double enginePower, double currentSpeed, Color color, int nrDoors) {
+    private Scania(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color,"Scania", nrDoors);
         setBed(bed);
     }
+
+    public static Scania createScania(double enginePower, double currentSpeed, Color color, int nrDoors){
+        return new Scania(enginePower, currentSpeed, color, nrDoors);
+    }
+
 
     /**
      * @return raise the load

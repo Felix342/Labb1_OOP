@@ -11,8 +11,12 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
 
-    public Volvo240(double enginePower, double currentSpeed, Color color, int nrDoors) {
+    private Volvo240(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color, "Volvo240" , nrDoors);
+    }
+
+    static Volvo240 createVolvo240(double enginePower, double currentSpeed, Color color, int nrDoors){
+        return new Volvo240(enginePower, currentSpeed, color, nrDoors);
     }
 
     /**

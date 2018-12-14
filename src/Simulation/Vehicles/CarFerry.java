@@ -1,9 +1,7 @@
 package Simulation.Vehicles;
 
-import Simulation.Interfaces.Movable;
 import Simulation.Interfaces.Storeable;
 import Simulation.Vehicles.Trucks.Flak.Trailer;
-import Simulation.Vehicles.Cars.Car;
 
 import java.awt.*;
 
@@ -14,8 +12,12 @@ public class CarFerry extends Vehicle {
     private Trailer trailer = new Trailer(getX(), getY());
 
 
-    public CarFerry(double enginePower, double currentSpeed, Color color, String modelName) {
-        super(enginePower, currentSpeed, color, modelName);
+    private CarFerry(double enginePower, double currentSpeed, Color color) {
+        super(enginePower, currentSpeed, color, "CarFerry");
+    }
+
+    public static CarFerry createCarFerry(double enginePower, double currentSpeed, Color color){
+        return new CarFerry(enginePower, currentSpeed, color);
     }
 
     /**

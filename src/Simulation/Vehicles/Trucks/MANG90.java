@@ -11,10 +11,15 @@ import java.awt.*;
 public class MANG90 extends Truck {
     private Trailer trailer = new Trailer(getX(), getY());
 
-    public MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
+    private MANG90(double enginePower, double currentSpeed, Color color, int nrDoors) {
         super(enginePower, currentSpeed, color, "ManG90", nrDoors);
         setBed(trailer);
     }
+
+    public static MANG90 createMANG90(double enginePower, double currentSpeed, Color color, int nrDoors){
+        return new MANG90(enginePower, currentSpeed, color, nrDoors);
+    }
+
 
     /**
      * @param s is the car to be loaded onto the load

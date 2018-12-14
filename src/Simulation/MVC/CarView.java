@@ -17,7 +17,6 @@ import java.util.List;
  * It initializes with being center on the screen and attaching it's controller in it's state.
  * It communicates with the Controller by calling methods of it when an action fires of in
  * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
 public class CarView extends JPanel{
@@ -44,6 +43,9 @@ public class CarView extends JPanel{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+    JButton addCarButton = new JButton("Add Car");
+    JButton removeCarButton = new JButton("Remove Car");
+
     // Constructor
     public CarView(String framename, CarModel model) {
         this.setDoubleBuffered(true);
@@ -55,7 +57,6 @@ public class CarView extends JPanel{
     }
 
     // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
 
         window.setTitle(title);
@@ -89,13 +90,14 @@ public class CarView extends JPanel{
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
         controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turboOffButton, 5);
+        controlPanel.add(lowerBedButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         window.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
-
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
@@ -107,10 +109,6 @@ public class CarView extends JPanel{
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         window.add(stopButton);
-
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
-
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         window.pack();
@@ -126,10 +124,10 @@ public class CarView extends JPanel{
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         for (int i = 0; i < model.points.size(); i++) {
 
             Vehicle vehicle = model.pointBinder.get(model.points.get(i));
